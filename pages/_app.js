@@ -2,6 +2,8 @@ import '@/styles/globals.css'
 import Head from 'next/head'
 import Footer from '@/components/Footer'
 import Menu from '@/components/Menu'
+import { FirstLoadContext } from '@/lib/contexts'
+import { useState } from 'react'
 
 const env = process.env.NODE_ENV
 if (env !== 'development') {
@@ -14,6 +16,7 @@ if (env !== 'development') {
 }
 
 function MyApp({ Component, pageProps }) {
+  const [firstLoad, setFirstLoad] = useState(false)
   return (
     <>
       <Head>
@@ -45,7 +48,11 @@ function MyApp({ Component, pageProps }) {
       <div className="flex flex-col min-h-screen">
         <Menu />
         <main className="grow">
-          <Component {...pageProps} />
+          <FirstLoadContext.Provider
+            value={{ state: firstLoad, set: value => setFirstLoad(value) }}
+          >
+            <Component {...pageProps} />
+          </FirstLoadContext.Provider>
         </main>
         <Footer />
       </div>

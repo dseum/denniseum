@@ -10,7 +10,8 @@ import {
 import { useRouter } from 'next/router'
 import { classNames, hashKey } from 'impulse-utils'
 import { useSpring, animated } from '@react-spring/web'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { FirstLoadContext } from '@/lib/contexts'
 
 const pages = [
   {
@@ -36,16 +37,18 @@ const pages = [
 ]
 
 export default function Menu() {
+  const firstLoad = useContext(FirstLoadContext)
   const { pathname } = useRouter()
   const [currentY, setCurrentY] = useState(0)
-  const [open, setOpen] = useState(true)
-  const [styleVisible, styleVisibleApi] = useSpring(() => ({ height: 331 }))
+  const [open, setOpen] = useState(firstLoad)
+  const [styleVisible, styleVisibleApi] = useSpring(() => ({ height: 58 }))
+  useEffect(() => firstLoad.set(true), [])
   useEffect(() => {
     const timer = setTimeout(() => {
-      setOpen(false)
+      setOpen(firstLoad.state)
     }, 2000)
     return () => clearTimeout(timer)
-  }, [pathname])
+  }, [pathname, firstLoad.state])
   useEffect(() => {
     const updateVisible = () => {
       const { scrollY } = window
