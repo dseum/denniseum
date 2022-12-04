@@ -42,7 +42,7 @@ export default function Menu() {
   const [currentY, setCurrentY] = useState(0)
   const [open, setOpen] = useState(firstLoad)
   const [styleVisible, styleVisibleApi] = useSpring(() => ({ height: 58 }))
-  useEffect(() => firstLoad.set(true), [])
+  useEffect(() => firstLoad.set(true), [firstLoad])
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(firstLoad.state)
