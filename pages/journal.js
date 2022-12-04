@@ -33,7 +33,7 @@ export default function Journal(props) {
         <p className="text-xl sm:text-2xl">
           This is a rough draft collection of my thoughts and ideas.
         </p>
-        <div className="mt-4 md:mt-6">
+        <div className="mt-6">
           <span className="text-xl sm:text-2xl">{_template.warning}</span>
           <List>{_template.posts}</List>
         </div>

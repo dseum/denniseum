@@ -22,7 +22,7 @@ export default function Contact() {
           </InlineLink>
           . If you want to contact me directly, please use the following form.
         </p>
-        <div className="mt-4 md:mt-6">
+        <div className="mt-6">
           <ContactForm />
         </div>
       </Layout.Content>

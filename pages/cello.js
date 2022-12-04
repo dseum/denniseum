@@ -14,7 +14,7 @@ import {
 
 export default function Cello() {
   const awardsTransitionRef = useSpringRef()
-  const awardsTransitions = useTransition(cello.recordings, {
+  const awardsTransitions = useTransition(cello.awards, {
     ref: awardsTransitionRef,
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -57,7 +57,7 @@ export default function Cello() {
           years and orchestral music for {2022 - 2014} years. These are some of
           my competitions and performances.
         </p>
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 mt-4 md:mt-6">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 mt-6">
           <Card icon={NewspaperIcon}>
             <Card.Title>Awards</Card.Title>
             <Card.Content>

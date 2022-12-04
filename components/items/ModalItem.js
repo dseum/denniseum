@@ -7,8 +7,8 @@ import {
 import { subComponent } from 'impulse-utils'
 
 export default function ModalItem(props) {
-  const [open, setOpen] = useState(false)
   const cancelButtonRef = useRef(null)
+  const [open, setOpen] = useState(false)
   const _template = {
     title: subComponent.select(props.children, 'Title'),
     preview: subComponent.select(props.children, 'Preview'),
@@ -19,14 +19,14 @@ export default function ModalItem(props) {
     <>
       <li>
         <button
-          className="border border-gray-100 shadow-md p-3 rounded-md text-gray-500 hover:bg-gray-100 transition-colors duration-300 text-left"
+          className="border border-gray-100 shadow-md p-3 rounded-md text-gray-500 hover:bg-gray-100 transition-colors duration-300 text-left w-full"
           type="button"
           onClick={() => setOpen(true)}
         >
           <span className="text-gray-500 text-base sm:text-lg font-bold">
             {_template.title}
           </span>
-          <p className="text-gray-400 text-base sm:text-lg">
+          <p className="text-gray-400 text-base sm:text-lg shave-3">
             {_template.preview}
           </p>
         </button>
