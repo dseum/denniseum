@@ -20,7 +20,9 @@ export default function ContactForm() {
     Math.floor(Math.random() * 7 + 1),
   ]
   const [verifySet, setVerifySet] = useState([1, 1])
-  useEffect(() => setVerifySet(randomIntSet), [])
+  useEffect(() => {
+    setVerifySet(randomIntSet)
+  }, [])
   const handleChange = e =>
     setData({
       ...data,
