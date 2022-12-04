@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import InlineLink from '@/components/InlineLink'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { classNames } from 'impulse-utils'
 
 export default function Home() {
   return (
@@ -71,7 +72,10 @@ function BannerSection() {
   }
   return (
     <div
-      className="flex items-center justify-center relative snap-start"
+      className={classNames(
+        'flex items-center justify-center relative snap-start',
+        height === 0 && '!h-screen'
+      )}
       style={{ height }}
       ref={selfRef}
     >
