@@ -42,7 +42,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="author" content="Dennis Eum"></meta>
         <meta
           name="description"
-          content="Hey! My name is Dennis Eum, and I am a software engineer and mathematician at Harvard. Based in Minnesota, I love experimenting with creations and am also an avid cellist and debater."
+          content="Hello! My name is Dennis Eum, and I am a
+          software engineer and mathematician studying at Harvard. Based in
+          Minnesota, I love experimenting with creations and am also an avid
+          cellist and debater."
         ></meta>
       </Head>
       <div className="flex flex-col min-h-screen">

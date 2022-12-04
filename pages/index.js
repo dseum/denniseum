@@ -5,10 +5,15 @@ import { useEffect, useRef, useState } from 'react'
 import InlineLink from '@/components/InlineLink'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { classNames } from 'impulse-utils'
+import Head from 'next/head'
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <meta name="robots" content="index, follow"></meta>
+        <link rel="canonical" href="https://denniseum.com/"></link>
+      </Head>
       <BannerSection />
       <BioSection />
     </>
