@@ -15,7 +15,7 @@ export default function Projects() {
   useEffect(() => {
     window.addEventListener('resize', () => shaver)
     return window.removeEventListener('resize', shaver)
-  }, [])
+  }, [shaver])
   const transitions = useTransition(projects, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
