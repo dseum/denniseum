@@ -4,6 +4,8 @@ import Footer from '@/components/Footer'
 import Menu from '@/components/Menu'
 import { FirstLoadContext } from '@/lib/contexts'
 import { useState } from 'react'
+import { initializeApp } from 'firebase/app'
+import { getAnalytics } from 'firebase/analytics'
 
 const env = process.env.NODE_ENV
 if (env !== 'development') {
