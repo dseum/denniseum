@@ -23,16 +23,13 @@ const PostItem = props => {
     id: props.data.id,
     title: props.data.title,
     date: DateTime.fromISO(props.data.date).toFormat('DD'),
-    preview: `${
-      unified()
-        .use(rehypeParse, {
-          fragment: true,
-        })
-        .use(rehypeStringify)
-        .processSync(props.data.rawContent)
-        .toString()
-        .split('.')[0]
-    }...`,
+    preview: unified()
+      .use(rehypeParse, {
+        fragment: true,
+      })
+      .use(rehypeStringify)
+      .processSync(props.data.rawContent)
+      .toString(),
   }
   return (
     <li>
@@ -48,7 +45,7 @@ const PostItem = props => {
             <span>&#183;</span>
             <span>{_template.title}</span>
           </div>
-          <p className="text-gray-400 text-base sm:text-lg">
+          <p className="text-gray-400 text-base sm:text-lg shave-3">
             {_template.preview}
           </p>
         </div>

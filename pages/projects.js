@@ -13,8 +13,9 @@ export default function Projects() {
     10
   )
   useEffect(() => {
-    window.addEventListener('resize', () => shaver)
-    return window.removeEventListener('resize', shaver)
+    shaver()
+    window.addEventListener('resize', shaver)
+    return () => window.removeEventListener('resize', shaver)
   }, [shaver])
   const transitions = useTransition(projects, {
     from: { opacity: 0 },
@@ -22,8 +23,6 @@ export default function Projects() {
     leave: { opacity: 0 },
     config: config.gentle,
     trail: 40,
-    delay: 10,
-    onStart: () => shaver(),
   })
   const _template = {
     projects: transitions((style, project) => (
