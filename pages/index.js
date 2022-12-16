@@ -115,8 +115,9 @@ function BioSection() {
         <p>
           I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>,
           and <mark>JS</mark> are the four pillars of interactive software. With
-          these languages, coding is a combination of art and utility, and
-          therefore, design in every aspect is crucial.
+          these languages, coding is a combination of aesthetics and utility,
+          and therefore, designing programs with every aspect in mind is
+          crucial.
         </p>
         <p>
           You can request my full resume and send me messages{' '}

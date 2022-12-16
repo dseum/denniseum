@@ -44,7 +44,7 @@ export default function Post(props) {
   return (
     <>
       <Head>
-        <title>Dennis Eum - {_template.title}</title>
+        <title>{`Dennis Eum - ${_template.title}`}</title>
         <meta name="robots" content="none"></meta>
         <link
           rel="canonical"

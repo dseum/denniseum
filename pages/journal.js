@@ -47,7 +47,7 @@ export default function Journal(props) {
         </p>
         <div className="mt-6">
           <span className="text-xl sm:text-2xl">{_template.warning}</span>
-          <List>{_template.posts}</List>
+          <List className="grid gap-4 sm:gap-6">{_template.posts}</List>
         </div>
       </Layout.Content>
     </Layout>
