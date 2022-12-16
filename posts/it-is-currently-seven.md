@@ -1,7 +1,7 @@
 ---
 title: 'It Is Currently Seven'
 date: '2022-12-06'
-archived: false
+archived: true
 ---
 
 It’s currently seven in the morning, and I am awestruck at the pink- and indigo- layered sky that continues to rise in its whiter color when I look up. But while the sky seems hopeful, being on the second floor of our university library, I only see a dark industrial lane of buildings and cars when I look down. Myself, I am in the middle that splits these two worlds.

@@ -1,7 +1,7 @@
 ---
 title: 'My Dreamed Future'
 date: '2022-11-21'
-archived: false
+archived: true
 ---
 
 It’s nearing the end of my first college semester, and I have never been as hesitant about my future.
