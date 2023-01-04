@@ -67,12 +67,6 @@ export default function Home() {
       <Head>
         <meta name="robots" content="index, follow"></meta>
         <link rel="canonical" href="https://denniseum.com/"></link>
-        <meta
-          name="description"
-          content="Hello! My name is Dennis Eum, and I am a software engineer
-            and mathematician studying at Harvard. Based in Minnesota, I love experimenting with
-            creations and am also an avid cellist and debater."
-        ></meta>
       </Head>
       <div
         className={classNames(
