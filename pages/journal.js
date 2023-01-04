@@ -9,12 +9,12 @@ import shave from 'shave'
 import { useEffect } from 'react'
 
 export default function Journal(props) {
-  const shaver = debounce(() => shave('.shave-3', 28 * 3, { classname: 'shave-3' }), 10)
   useEffect(() => {
+    const shaver = debounce(() => shave('.shave-3', 28 * 3), 10)
     shaver()
     window.addEventListener('resize', shaver)
     return () => window.removeEventListener('resize', shaver)
-  }, [shaver])
+  }, [])
   const transitions = useTransition(props.posts, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -51,7 +51,7 @@ export default function Journal(props) {
   )
 }
 
-export const getStaticProps = () => {
+export function getStaticProps() {
   const posts = getSortedPosts()
   return {
     props: {

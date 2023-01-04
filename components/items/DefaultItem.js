@@ -5,7 +5,7 @@ const DefaultItem = props => {
     if (props.href === '') {
       return (
         <li>
-          <div className="flex flex-nowrap items-center justify-between transition-colors duration-200 hover:bg-gray-100 py-1 px-3 rounded text-gray-500 text-lg sm:text-xl gap-2">
+          <div className="flex flex-nowrap items-center justify-between transition-colors duration-200 hover:bg-gray-100 py-1 px-3 rounded text-gray-600 text-lg sm:text-xl gap-2">
             {props.children}
             <EyeSlashIcon className="h-6 w-6 shrink-0" />
           </div>
@@ -15,7 +15,7 @@ const DefaultItem = props => {
       return (
         <li>
           <a href={props.href} target="_blank" rel="noreferrer">
-            <div className="flex flex-nowrap items-center justify-between transition-colors duration-200 hover:bg-gray-100 py-1 px-3 rounded text-gray-500 text-lg sm:text-xl gap-2">
+            <div className="flex flex-nowrap items-center justify-between transition-colors duration-200 hover:bg-gray-100 py-1 px-3 rounded text-gray-600 text-lg sm:text-xl gap-2">
               {props.children}
               <ArrowTopRightOnSquareIcon className="h-6 w-6 shrink-0" />
             </div>
@@ -26,7 +26,7 @@ const DefaultItem = props => {
   } else {
     return (
       <li>
-        <div className="transition-colors duration-200 hover:bg-gray-100 py-1 px-3 rounded text-gray-500 text-lg sm:text-xl">
+        <div className="transition-colors duration-200 hover:bg-gray-100 py-1 px-3 rounded text-gray-600 text-lg sm:text-xl">
           {props.children}
         </div>
       </li>

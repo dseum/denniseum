@@ -46,32 +46,44 @@
     font-display: swap;
   }
   @font-face {
-    font-family: 'Computer Modern';
+    font-family: 'Tinos';
     font-weight: 400;
     font-style: normal;
-    src: url(/assets/fonts/ComputerModern/ComputerModern-Regular.woff) format('woff');
+    src: url(/assets/fonts/Tinos/Tinos-Regular.woff) format('woff');
     font-display: swap;
   }
   @font-face {
-    font-family: 'Computer Modern';
+    font-family: 'Tinos';
     font-weight: 400;
     font-style: italic;
-    src: url(/assets/fonts/ComputerModern/ComputerModern-Italic.woff) format('woff');
+    src: url(/assets/fonts/Tinos/Tinos-Italic.woff) format('woff');
     font-display: swap;
   }
   @font-face {
-    font-family: 'Computer Modern';
+    font-family: 'Tinos';
     font-weight: 700;
     font-style: normal;
-    src: url(/assets/fonts/ComputerModern/ComputerModern-Bold.woff) format('woff');
+    src: url(/assets/fonts/Tinos/Tinos-Bold.woff) format('woff');
     font-display: swap;
   }
   @font-face {
-    font-family: 'Computer Modern';
+    font-family: 'Tinos';
     font-weight: 700;
     font-style: italic;
-    src: url(/assets/fonts/ComputerModern/ComputerModern-BoldItalic.woff) format('woff');
+    src: url(/assets/fonts/Tinos/Tinos-BoldItalic.woff) format('woff');
     font-display: swap;
+  }
+  body {
+    @apply bg-white font-sans antialiased text-gray-700 text-lg sm:text-xl scroll-smooth;
+  }
+  mark {
+    @apply bg-indigo-100 px-1 rounded-sm;
+  }
+  input {
+    @apply border border-gray-400 rounded-md w-full h-12 focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 px-3 placeholder-gray-600 transition-all duration-200 disabled:bg-gray-100;
+  }
+  textarea {
+    @apply border border-gray-400 rounded-md w-full min-h-[12rem] focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 p-3 placeholder-gray-600 transition-all duration-200 disabled:bg-gray-100 align-top;
   }
 }
 
@@ -83,8 +95,20 @@
     padding-right: calc((100vw + 5rem) / 21);
     padding-left: calc((100vw + 5rem) / 21);
   }
+  .pl-dynamic {
+    padding-left: calc((100vw + 5rem) / 21);
+  }
+  .pr-dynamic {
+    padding-right: calc((100vw + 5rem) / 21);
+  }
   .py-dynamic {
     padding-top: calc((100vw + 5rem) / 21);
+    padding-bottom: calc((100vw + 5rem) / 21);
+  }
+  .pt-dynamic {
+    padding-top: calc((100vw + 5rem) / 21);
+  }
+  .pb-dynamic {
     padding-bottom: calc((100vw + 5rem) / 21);
   }
   .m-dynamic {
@@ -94,47 +118,58 @@
     margin-right: calc((100vw + 5rem) / 21);
     margin-left: calc((100vw + 5rem) / 21);
   }
+  .ml-dynamic {
+    margin-left: calc((100vw + 5rem) / 21);
+  }
+  .mr-dynamic {
+    margin-right: calc((100vw + 5rem) / 21);
+  }
   .my-dynamic {
     margin-top: calc((100vw + 5rem) / 21);
+    margin-bottom: calc((100vw + 5rem) / 21);
+  }
+  .mt-dynamic {
+    margin-top: calc((100vw + 5rem) / 21);
+  }
+  .mb-dynamic {
     margin-bottom: calc((100vw + 5rem) / 21);
   }
   .shadow-b {
     box-shadow: 0 1px 2px -1px rgb(0 0 0 / 0.1);
   }
+  .animate-gradient {
+    background: linear-gradient(-45deg, #f4f0e8, #bfdbfe, #e7dfce, #a5b4fc);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
   .animate-little-bounce {
     animation: little-bounce 0.8s infinite;
   }
+  @keyframes little-bounce {
+    0%,
+    100% {
+      transform: translateY(-10%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(5%);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
 }
 
-body {
-  @apply bg-white font-sans antialiased text-gray-700 text-xl;
-}
-
-mark {
-  @apply bg-indigo-100 px-1 rounded-sm;
-}
-
-input {
-  @apply border border-gray-400 rounded-md w-full h-10 sm:h-12 focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 text-lg sm:text-xl p-2 sm:p-3 placeholder-gray-600 transition-all duration-200 disabled:bg-gray-100;
-}
-
-textarea {
-  @apply border border-gray-400 rounded-md w-full min-h-[12rem] focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 text-lg sm:text-xl p-2 sm:p-3 placeholder-gray-600 transition-all duration-200 disabled:bg-gray-100 align-top;
-}
-
-.form-validate input:invalid,
-.form-validate textarea:invalid {
+.show-validation input:invalid,
+.show-validation textarea:invalid {
   @apply border-red-500 focus:ring-red-500 transition-all duration-200;
-}
-
-@keyframes little-bounce {
-  0%,
-  100% {
-    transform: translateY(-10%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: translateY(5%);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
 }

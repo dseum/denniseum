@@ -1,19 +1,22 @@
 import Link from 'next/link'
 import {
-  HomeIcon,
   CubeIcon,
   MusicalNoteIcon,
   BookmarkSquareIcon,
-  AtSymbolIcon,
-  ArrowDownIcon
+  AtSymbolIcon
 } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 import { classNames, hashKey } from 'impulse-utils'
-import { useSpring, animated } from '@react-spring/web'
-import { useContext, useEffect, useState } from 'react'
-import { FirstLoadContext } from '@/lib/contexts'
+import { animated, useTrail } from '@react-spring/web'
+import { useEffect, useState } from 'react'
+import { throttle } from 'lodash'
 
 const pages = [
+  {
+    name: 'Home',
+    href: '/',
+    icon: CubeIcon
+  },
   {
     name: 'Projects',
     href: '/projects',
@@ -37,181 +40,69 @@ const pages = [
 ]
 
 export default function Menu() {
-  const firstLoad = useContext(FirstLoadContext)
   const { pathname } = useRouter()
+  const [open, setOpen] = useState(true)
   const [currentY, setCurrentY] = useState(0)
-  const [open, setOpen] = useState(firstLoad)
-  const [styleVisible, styleVisibleApi] = useSpring(() => ({ height: 58 }))
+  const [pagesTrails, api] = useTrail(
+    pages.length,
+    () => ({
+      from: { opacity: 0, x: -130 },
+      to: { opacity: 1, x: 0 }
+    }),
+    []
+  )
   useEffect(() => {
-    firstLoad.set(true)
-  }, [firstLoad])
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(firstLoad.state)
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [pathname, firstLoad.state])
-  useEffect(() => {
-    const updateVisible = () => {
-      const { scrollY } = window
-      setOpen(currentY > scrollY)
-      setCurrentY(scrollY)
-    }
-    document.addEventListener('scroll', updateVisible)
-    return () => document.removeEventListener('scroll', updateVisible)
-  }, [currentY])
+    setOpen(false)
+  }, [pathname])
   useEffect(() => {
     if (open) {
-      styleVisibleApi.start({ height: 331 })
+      api.start({ opacity: 1, x: 0 })
     } else {
-      styleVisibleApi.stop()
-      styleVisibleApi.start({ height: 58 })
+      api.start({ opacity: 0, x: -130 })
     }
-  }, [open, styleVisibleApi])
+  }, [open, api])
+  useEffect(() => {
+    const updateOpen = throttle(() => {
+      const { scrollY } = window
+      if (currentY < scrollY) {
+        setOpen(false)
+      }
+      setCurrentY(scrollY)
+    }, 150)
+    document.addEventListener('scroll', updateOpen)
+    return () => document.removeEventListener('scroll', updateOpen)
+  }, [currentY])
   const _template = {
-    pages: pages.map((page, index) => (
-      <Orb
-        name={page.name}
-        href={page.href}
-        open={open}
-        offset={index + 1}
-        key={hashKey(page.href)}
-      >
-        {<page.icon className="w-6 h-6" />}
-      </Orb>
-    ))
+    pages: pagesTrails.map((style, index) => {
+      const page = pages[index]
+      return (
+        <animated.div key={hashKey(page.href)} style={style} className="flex">
+          <Link
+            className={classNames(
+              'flex-shrink text-xl uppercase font-bold tracking-wider flex items-center justify-start h-9 px-2 border border-gray-700 bg-[#f4f0e8] hover:bg-[#e7dfce] transition-colors duration-200',
+              pathname === page.href ? 'text-gray-900' : 'text-gray-500'
+            )}
+            href={page.href}
+          >
+            {page.name}
+          </Link>
+        </animated.div>
+      )
+    })
   }
   return (
-    <div className="fixed bottom-3 left-3 z-10 group flex gap-3">
-      <div className="relative">
-        <animated.div
-          className="static flex-col-reverse p-1 space-y-1 border border-gray-400 rounded-full bg-white overflow-hidden"
-          style={styleVisible}
-        >
-          <Orb name="Home" href="/" open={open} offset={0}>
-            <HomeIcon className="w-6 h-6" />
-          </Orb>
-          {_template.pages}
-          <div className="border-t border-gray-400 !my-2 mx-2"></div>
-          <ToggleOrb open={open} setOpen={setOpen} />
-        </animated.div>
-      </div>
-    </div>
-  )
-}
-
-function Orb(props) {
-  const { pathname } = useRouter()
-  const [hover, setHover] = useState(false)
-  const [click, setClick] = useState(false)
-  const [styleNames, styleNamesApi] = useSpring(() => ({
-    opacity: 0
-  }))
-  useEffect(() => {
-    if (hover) {
-      styleNamesApi.start({ opacity: 1 })
-    } else {
-      styleNamesApi.start({ opacity: 0 })
-    }
-  }, [hover, styleNamesApi])
-  useEffect(() => {
-    if (click) {
-      setHover(true)
-      const timer = setTimeout(() => setClick(false), 750)
-      return () => clearTimeout(timer)
-    } else {
-      setHover(false)
-    }
-  }, [click])
-  return (
-    <div>
-      <Link
-        className={classNames(
-          'rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300',
-          pathname === props.href && props.open && 'bg-gray-200'
-        )}
-        href={props.href}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => setClick(true)}
-      >
-        {props.children}
-      </Link>
-      <animated.div
-        className="absolute left-0 top-0 h-12 ml-[4.25rem] flex items-center"
-        style={{
-          marginTop: 4 + 52 * props.offset,
-          ...styleNames
-        }}
-      >
-        <div className="bg-indigo-200 py-1 px-2 rounded-md">{props.name}</div>
-      </animated.div>
-    </div>
-  )
-}
-
-function ToggleOrb(props) {
-  const [hover, setHover] = useState(false)
-  const [click, setClick] = useState(false)
-  const [styleNames, styleNamesApi] = useSpring(() => ({
-    opacity: 0
-  }))
-  const [styleRotate, styleRotateApi] = useSpring(() => ({
-    transform: 'rotate(0deg)',
-    borderColor: '#d1d5db'
-  }))
-  useEffect(() => {
-    if (hover) {
-      styleNamesApi.start({ opacity: 1 })
-    } else {
-      styleNamesApi.start({ opacity: 0 })
-    }
-  }, [hover, styleNamesApi])
-  useEffect(() => {
-    if (props.open) {
-      styleRotateApi.start({
-        transform: 'rotate(0deg)',
-        borderColor: '#d1d5db'
-      })
-    } else {
-      styleRotateApi.start({
-        transform: 'rotate(180deg)',
-        borderColor: '#ffffff'
-      })
-    }
-  }, [props.open, styleRotateApi])
-  useEffect(() => {
-    if (click) {
-      setHover(true)
-      const timer = setTimeout(() => setClick(false), 750)
-      return () => clearTimeout(timer)
-    } else {
-      setHover(false)
-    }
-  }, [click])
-  return (
-    <div className="absolute bottom-[1px]">
-      <div className="relative flex">
-        <div className="rounded-full h-14 bg-white flex items-center">
-          <animated.button
-            className="rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300 border bg-white"
-            style={styleRotate}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onClick={() => {
-              props.setOpen(!props.open)
-              setClick(true)
-            }}
+    <div className="fixed bottom-3 left-3 lg:bottom-6 lg:left-6 z-10">
+      <div className="p-1 grid space-y-1 gap-3 overflow-hidden">
+        {_template.pages}
+        <div>
+          <button
+            className="text-gray-900 text-xl uppercase font-bold tracking-wider flex items-center justify-center h-9 px-2 border border-gray-700 animate-gradient"
+            type="button"
+            onClick={() => setOpen(!open)}
           >
-            <ArrowDownIcon className="w-6 h-6" />
-          </animated.button>
+            Menu
+          </button>
         </div>
-        <animated.div
-          className="absolute left-0 top-1 h-12 ml-16 flex items-center"
-          style={styleNames}
-        >
-          <div className="bg-indigo-200 py-1 px-2 rounded-md">{props.open ? 'Close' : 'Open'}</div>
-        </animated.div>
       </div>
     </div>
   )

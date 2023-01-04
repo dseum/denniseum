@@ -1,12 +1,16 @@
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, useContext, useEffect, useRef, useState } from 'react'
 import { DateTime } from 'luxon'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 import { ArrowRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { classNames } from 'impulse-utils'
 import { Transition, Dialog } from '@headlessui/react'
+import { FirebaseConfigContext } from '@/lib/contexts'
+import { initializeApp } from 'firebase/app'
 
 export default function ContactForm() {
+  const firebaseConfig = useContext(FirebaseConfigContext)
   const cancelButtonRef = useRef(null)
+  const [firestore, setFirestore] = useState(undefined)
   const [data, setData] = useState({
     first_name: '',
     last_name: '',
@@ -15,14 +19,16 @@ export default function ContactForm() {
     verify_code: ''
   })
   const [processing, setProcessing] = useState(false)
-  const [validate, setValidate] = useState(false)
+  const [showValidation, setShowValidation] = useState(false)
   const [open, setOpen] = useState(false)
   const verifyCodeRef = useRef(null)
   const randomIntSet = () => [Math.floor(Math.random() * 7 + 1), Math.floor(Math.random() * 7 + 1)]
   const [verifySet, setVerifySet] = useState([1, 1])
   useEffect(() => {
+    const app = initializeApp(firebaseConfig)
+    setFirestore(getFirestore(app))
     setVerifySet(randomIntSet())
-  }, [])
+  }, [firebaseConfig])
   const handleChange = e =>
     setData({
       ...data,
@@ -38,7 +44,7 @@ export default function ContactForm() {
     if (e.target.checkValidity()) {
       setProcessing(true)
       const now = DateTime.local().setZone('America/Chicago')
-      setDoc(doc(getFirestore(), 'responses', now.toFormat('yyyy-MM-dd hh:mm:ss a')), {
+      setDoc(doc(firestore, 'responses', now.toFormat('yyyy-MM-dd hh:mm:ss a')), {
         to: atob('ZHNldW0yMkBnbWFpbC5jb20='),
         message: {
           subject: `Message @ ${now.toFormat('ff')}`,
@@ -54,7 +60,7 @@ export default function ContactForm() {
       })
         .then(() => {
           setOpen(true)
-          setValidate(false)
+          setShowValidation(false)
           setProcessing(false)
           setData({
             first_name: '',
@@ -69,13 +75,13 @@ export default function ContactForm() {
           setProcessing(false)
         })
     } else {
-      setValidate(true)
+      setShowValidation(true)
     }
   }
   return (
     <>
       <form
-        className={classNames(validate && 'form-validate', 'relative mb-3')}
+        className={classNames(showValidation && 'show-validation', 'relative mb-3')}
         onSubmit={handleSubmit}
         noValidate
       >

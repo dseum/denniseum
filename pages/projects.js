@@ -8,14 +8,14 @@ import { useEffect } from 'react'
 import shave from 'shave'
 
 export default function Projects() {
-  const shaver = debounce(() => shave('.shave-3', 28 * 3, { classname: 'shave-3' }), 10)
   useEffect(() => {
+    const shaver = debounce(() => shave('.shave-3', 28 * 3), 10)
     shaver()
     window.addEventListener('resize', shaver)
     return () => window.removeEventListener('resize', shaver)
-  }, [shaver])
+  }, [])
   const transitions = useTransition(projects, {
-    from: { opacity: 0 },
+    from: { opacity: 1 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: config.gentle,
@@ -26,7 +26,7 @@ export default function Projects() {
       <animated.div style={style}>
         <ModalItem href={project.href}>
           <ModalItem.Title>{project.name}</ModalItem.Title>
-          <ModalItem.Preview>{`${project.description} ${project.content}`}</ModalItem.Preview>
+          <ModalItem.Preview>{project.content}</ModalItem.Preview>
           <ModalItem.Stack>{project.stack.join(', ')}</ModalItem.Stack>
           <ModalItem.Content>{project.content}</ModalItem.Content>
         </ModalItem>

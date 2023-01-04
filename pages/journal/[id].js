@@ -48,19 +48,21 @@ export default function Post(props) {
         <meta name="robots" content="none"></meta>
         <link rel="canonical" href={`https://denniseum.com/blog/${_template.id}`}></link>
       </Head>
-      <div className="max-w-3xl mx-auto px-dynamic lg:px-0">
-        <div className="text-xl sm:text-2xl text-gray-400 my-3 lg:my-6">
+      <div className="max-w-3xl mx-auto px-dynamic">
+        <div className="text-xl sm:text-2xl text-gray-400 mt-6">
           <InlineLink href="/journal">Back to Journal</InlineLink>
         </div>
-        <h1 className="text-3xl sm:text-5xl py-1 font-bold mr-2">{_template.title}</h1>
-        <div className="text-xl sm:text-2xl text-gray-400 my-3 lg:my-6">
+        <div className="my-1 mt-6 sm:mt-7">
+          <h1 className="text-4xl sm:text-5xl font-bold">{_template.title}</h1>
+        </div>
+        <div className="text-xl sm:text-2xl text-gray-400 my-5 sm:my-6">
           <span>Posted on {_template.date}</span>
           <div className="hidden sm:inline-block">
             <span className="mx-2">&#183;</span>
             <span>{_template.readTime} min read</span>
           </div>
         </div>
-        <div className="text-xl sm:text-2xl font-serif !leading-loose">
+        <div className="font-serif !leading-loose !tracking-wide">
           <Markdown>{_template.content}</Markdown>
         </div>
         <div className="flex items-center justify-center my-6 lg:my-10">
@@ -68,7 +70,7 @@ export default function Post(props) {
             <Image src={signatureImage} alt="" />
           </div>
         </div>
-        <div className="text-xl sm:text-2xl text-gray-400 my-3 lg:my-6">
+        <div className="text-xl sm:text-2xl text-gray-400 mt-4 lg:my-6">
           <InlineLink href="/journal">Back to Journal</InlineLink>
         </div>
       </div>
@@ -76,7 +78,7 @@ export default function Post(props) {
   )
 }
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const paths = getAllPostIds()
   return {
     paths,
@@ -84,7 +86,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async ({ params }) => {
+export async function getStaticProps({ params }) {
   const post = await getPost(params.id)
   return {
     props: {

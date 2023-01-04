@@ -1,26 +1,13 @@
-import { useSpring, animated, update } from '@react-spring/web'
+import { useSpring, animated } from '@react-spring/web'
 import signatureImage from '@/assets/images/signature.jpg'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import InlineLink from '@/components/InlineLink'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { classNames } from 'impulse-utils'
 import Head from 'next/head'
+import Section from '@/components/Section'
 
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <meta name="robots" content="index, follow"></meta>
-        <link rel="canonical" href="https://denniseum.com/"></link>
-      </Head>
-      <BannerSection />
-      <BioSection />
-    </>
-  )
-}
-
-function BannerSection() {
   const selfRef = useRef(null)
   const [height, setHeight] = useState(0)
   const styleSignature = useSpring({
@@ -76,52 +63,57 @@ function BannerSection() {
     })
   }
   return (
-    <div
-      className={classNames(
-        'flex items-center justify-center relative snap-start',
-        height === 0 && '!h-screen'
-      )}
-      style={{ height }}
-      ref={selfRef}
-    >
-      <animated.div className="w-52" style={styleSignature}>
-        <Image src={signatureImage} alt="Signature" priority />
-      </animated.div>
-      <animated.button
-        className="absolute bottom-8"
-        style={styleVisible}
-        type="button"
-        onClick={handleScrollDown}
+    <>
+      <Head>
+        <meta name="robots" content="index, follow"></meta>
+        <link rel="canonical" href="https://denniseum.com/"></link>
+        <meta
+          name="description"
+          content="Hello! My name is Dennis Eum, and I am a software engineer
+            and mathematician studying at Harvard. Based in Minnesota, I love experimenting with
+            creations and am also an avid cellist and debater."
+        ></meta>
+      </Head>
+      <div
+        className={classNames(
+          'flex items-center justify-center relative snap-start',
+          height === 0 && '!h-screen'
+        )}
+        style={{ height }}
+        ref={selfRef}
       >
-        <ChevronDownIcon className="w-8 h-8 animate-bounce" />
-      </animated.button>
-    </div>
-  )
-}
-
-function BioSection() {
-  return (
-    <div className="flex items-center justify-center snap-start p-dynamic">
-      <div className="sm:w-2/3 lg:w-1/2 leading-loose space-y-8">
-        <h1 className="text-4xl sm:text-5xl font-bold !leading-tight lg:mr-8 underline decoration-wavy decoration-indigo-400">
-          Hello!
-        </h1>
-        <p>
-          My name is <span className="font-bold">Dennis Eum</span>, and I am a software engineer and
-          mathematician studying at Harvard. Based in Minnesota, I love experimenting with creations
-          and am also an avid cellist and debater.
-        </p>
-        <p>
-          I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>, and <mark>JS</mark>{' '}
-          are the four pillars of interactive software. With these languages, coding is a
-          combination of aesthetics and utility, and therefore, designing programs with every aspect
-          in mind is crucial.
-        </p>
-        <p>
-          You can request my full resume and send me messages{' '}
-          <InlineLink href="/contact">here</InlineLink>.
-        </p>
+        <animated.div className="w-52" style={styleSignature}>
+          <Image src={signatureImage} alt="Signature" priority />
+        </animated.div>
+        <animated.button
+          className="absolute bottom-8"
+          style={styleVisible}
+          type="button"
+          onClick={handleScrollDown}
+        >
+          <ChevronDownIcon className="w-8 h-8 animate-bounce" />
+        </animated.button>
       </div>
-    </div>
+      <Section>
+        <Section.Title>Hello!</Section.Title>
+        <Section.Content>
+          <p>
+            My name is <span className="font-bold">Dennis Eum</span>, and I am a software engineer
+            and mathematician studying at Harvard. Based in Minnesota, I love experimenting with
+            creations and am also an avid cellist and debater.
+          </p>
+          <p>
+            I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>, and <mark>JS</mark>{' '}
+            are the four pillars of interactive software. While I am still in the early phase of
+            discovering all of what is out there, there is something special about those languages
+            in utility and design.
+          </p>
+          <p>
+            Together, they establish a very clear aesthetic of computer science that should be the
+            goal of every program.
+          </p>
+        </Section.Content>
+      </Section>
+    </>
   )
 }

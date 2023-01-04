@@ -1,9 +1,9 @@
 export default function Markdown(props) {
-  return <article className="space-y-3 lg:space-y-5">{props.children}</article>
+  return <article className="space-y-5">{props.children}</article>
 }
 
 function Div(props) {
-  return <div className="space-y-3 lg:space-y-5">{props.children}</div>
+  return <div className="space-y-5">{props.children}</div>
 }
 Markdown.Div = Div
 

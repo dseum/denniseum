@@ -1,8 +1,9 @@
 import ContactForm from '@/components/ContactForm'
 import InlineLink from '@/components/InlineLink'
 import Layout from '@/components/Layout'
+import { FirebaseConfigContext } from '@/lib/contexts'
 
-export default function Contact() {
+export default function Contact({ firebaseConfig }) {
   return (
     <Layout>
       <Layout.Head>
@@ -23,9 +24,28 @@ export default function Contact() {
           . If you want to contact me directly, please use the following form.
         </p>
         <div className="mt-6">
-          <ContactForm />
+          <FirebaseConfigContext.Provider value={firebaseConfig}>
+            <ContactForm />
+          </FirebaseConfigContext.Provider>
         </div>
       </Layout.Content>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+  }
+  return {
+    props: {
+      firebaseConfig
+    }
+  }
 }

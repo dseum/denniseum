@@ -16,12 +16,14 @@ export default function ModalItem(props) {
     <>
       <li>
         <button
-          className="border border-gray-100 shadow-md p-3 rounded-md text-gray-500 hover:bg-gray-100 transition-colors duration-300 text-left w-full"
+          className="border border-gray-100 shadow-md py-3 px-5 rounded-md hover:bg-gray-100 transition-colors duration-300 text-left w-full"
           type="button"
           onClick={() => setOpen(true)}
         >
-          <span className="text-gray-500 text-base sm:text-lg font-bold">{_template.title}</span>
-          <p className="text-gray-400 text-base sm:text-lg shave-3">{_template.preview}</p>
+          <span className="text-gray-600 text-base sm:text-lg font-bold">{_template.title}</span>
+          <p className="text-gray-500 text-base sm:text-lg shave-3 h-[5.25rem] overflow-hidden">
+            {_template.preview}
+          </p>
         </button>
       </li>
       <Transition.Root show={open} as={Fragment}>
@@ -58,26 +60,24 @@ export default function ModalItem(props) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div className="bg-white px-8 mt-8 mb-4">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-500">
+                <div className="bg-white px-8 mt-8 mb-4 text-gray-600">
+                  <h3 className="text-2xl sm:text-3xl font-bold">
                     {props.href ? (
                       <a
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-2"
                         href={props.href}
                         target="_blank"
                         rel="noreferrer"
                       >
                         {_template.title}
-                        <ArrowTopRightOnSquareIcon className="h-8 w-8" />
+                        <ArrowTopRightOnSquareIcon className="h-6 w-6" />
                       </a>
                     ) : (
                       _template.title
                     )}
                   </h3>
-                  <div className="text-gray-500 mt-4 mb-3">{_template.stack}</div>
-                  <p className="text-lg sm:text-xl !leading-relaxed text-gray-500">
-                    {_template.content}
-                  </p>
+                  <div className="mt-4 mb-3">{_template.stack}</div>
+                  <p className="leading-relaxed">{_template.content}</p>
                 </div>
                 <div className="flex items-center justify-center mb-6">
                   <button

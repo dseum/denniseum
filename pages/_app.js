@@ -2,23 +2,8 @@ import '@/styles/globals.css'
 import Head from 'next/head'
 import Footer from '@/components/Footer'
 import Menu from '@/components/Menu'
-import { FirstLoadContext } from '@/lib/contexts'
-import { useState } from 'react'
-import { initializeApp } from 'firebase/app'
-import { getAnalytics } from 'firebase/analytics'
-
-const env = process.env.NODE_ENV
-if (env !== 'development') {
-  fetch('/__/firebase/init.json')
-    .then(async response => {
-      const app = initializeApp(await response.json())
-      getAnalytics(app)
-    })
-    .catch(response => console.log(response))
-}
 
 function MyApp({ Component, pageProps }) {
-  const [firstLoad, setFirstLoad] = useState(false)
   return (
     <>
       <Head>
@@ -39,11 +24,7 @@ function MyApp({ Component, pageProps }) {
       <div className="flex flex-col min-h-screen">
         <Menu />
         <main className="grow">
-          <FirstLoadContext.Provider
-            value={{ state: firstLoad, set: value => setFirstLoad(value) }}
-          >
-            <Component {...pageProps} />
-          </FirstLoadContext.Provider>
+          <Component {...pageProps} />
         </main>
         <Footer />
       </div>

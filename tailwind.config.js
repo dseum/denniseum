@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      serif: ['Computer Modern', ...defaultTheme.fontFamily.serif],
+      serif: ['Tinos', ...defaultTheme.fontFamily.serif],
       mono: [...defaultTheme.fontFamily.mono]
     },
     extend: {}
