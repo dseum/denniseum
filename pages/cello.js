@@ -4,13 +4,7 @@ import Card from '@/components/Card'
 import DefaultItem from '@/components/items/DefaultItem'
 import List from '@/components/List'
 import { cello } from '@/lib/data'
-import {
-  useTransition,
-  animated,
-  config,
-  useSpringRef,
-  useChain,
-} from '@react-spring/web'
+import { useTransition, animated, config, useSpringRef, useChain } from '@react-spring/web'
 
 export default function Cello() {
   const awardsTransitionRef = useSpringRef()
@@ -20,7 +14,7 @@ export default function Cello() {
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: config.gentle,
-    trail: 40,
+    trail: 40
   })
   const recordingsTransitionRef = useSpringRef()
   const recordingsTransitions = useTransition(cello.recordings, {
@@ -29,7 +23,7 @@ export default function Cello() {
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: config.gentle,
-    trail: 40,
+    trail: 40
   })
   useChain([awardsTransitionRef, recordingsTransitionRef], [0, 0.3])
   const _template = {
@@ -42,7 +36,7 @@ export default function Cello() {
       <animated.div style={style}>
         <DefaultItem href={recording.href}>{recording.name}</DefaultItem>
       </animated.div>
-    )),
+    ))
   }
   return (
     <Layout>
@@ -53,9 +47,8 @@ export default function Cello() {
       <Layout.Title>Cello</Layout.Title>
       <Layout.Content>
         <p className="text-xl sm:text-2xl">
-          I have been playing solo cello for {new Date().getFullYear() - 2012}{' '}
-          years and orchestral music for {2022 - 2014} years. These are some of
-          my competitions and performances.
+          I have been playing solo cello for {new Date().getFullYear() - 2012} years and orchestral
+          music for {2022 - 2014} years. These are some of my competitions and performances.
         </p>
         <div className="grid grid-cols-1 gap-6 sm:gap-8 mt-6">
           <Card icon={NewspaperIcon}>

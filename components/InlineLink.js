@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 export default function InlineLink(props) {
   const [internal, setInternal] = useState(false)
   const _styles = {
-    link: useSpring(),
+    link: useSpring()
   }
   useEffect(() => {
     const tempEl = document.createElement('a')
@@ -14,7 +14,7 @@ export default function InlineLink(props) {
     setInternal(tempEl.host === window.location.host)
   }, [props.href])
   const _classNames = {
-    link: 'border-b border-gray-800 text-gray-800 hover:bg-indigo-100 transition-colors duration-200',
+    link: 'border-b border-gray-800 text-gray-800 hover:bg-indigo-100 transition-colors duration-200'
   }
   if (internal) {
     return (

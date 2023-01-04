@@ -12,16 +12,13 @@ export default function ContactForm() {
     last_name: '',
     email: '',
     message: '',
-    verify_code: '',
+    verify_code: ''
   })
   const [processing, setProcessing] = useState(false)
   const [validate, setValidate] = useState(false)
   const [open, setOpen] = useState(false)
   const verifyCodeRef = useRef(null)
-  const randomIntSet = () => [
-    Math.floor(Math.random() * 7 + 1),
-    Math.floor(Math.random() * 7 + 1),
-  ]
+  const randomIntSet = () => [Math.floor(Math.random() * 7 + 1), Math.floor(Math.random() * 7 + 1)]
   const [verifySet, setVerifySet] = useState([1, 1])
   useEffect(() => {
     setVerifySet(randomIntSet())
@@ -29,7 +26,7 @@ export default function ContactForm() {
   const handleChange = e =>
     setData({
       ...data,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   const handleSubmit = e => {
     e.preventDefault()
@@ -41,23 +38,20 @@ export default function ContactForm() {
     if (e.target.checkValidity()) {
       setProcessing(true)
       const now = DateTime.local().setZone('America/Chicago')
-      setDoc(
-        doc(getFirestore(), 'responses', now.toFormat('yyyy-MM-dd hh:mm:ss a')),
-        {
-          to: atob('ZHNldW0yMkBnbWFpbC5jb20='),
-          message: {
-            subject: `Message @ ${now.toFormat('ff')}`,
-            html: `<b>Name:</b> ${`${data.first_name} ${data.last_name}`}<br><br><b>Email:</b> ${
-              data.email
-            }<br><br><b>Message:</b><br>${data.message}`,
-          },
-          map: {
-            name: `${data.first_name} ${data.last_name}`,
-            email: data.email,
-            message: data.message,
-          },
+      setDoc(doc(getFirestore(), 'responses', now.toFormat('yyyy-MM-dd hh:mm:ss a')), {
+        to: atob('ZHNldW0yMkBnbWFpbC5jb20='),
+        message: {
+          subject: `Message @ ${now.toFormat('ff')}`,
+          html: `<b>Name:</b> ${`${data.first_name} ${data.last_name}`}<br><br><b>Email:</b> ${
+            data.email
+          }<br><br><b>Message:</b><br>${data.message}`
+        },
+        map: {
+          name: `${data.first_name} ${data.last_name}`,
+          email: data.email,
+          message: data.message
         }
-      )
+      })
         .then(() => {
           setOpen(true)
           setValidate(false)
@@ -67,7 +61,7 @@ export default function ContactForm() {
             last_name: '',
             email: '',
             message: '',
-            verify_code: '',
+            verify_code: ''
           })
           setVerifySet(randomIntSet())
         })
@@ -171,10 +165,7 @@ export default function ContactForm() {
             >
               <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
-            <span
-              className="hidden sm:inline-block sm:align-middle sm:h-screen"
-              aria-hidden="true"
-            >
+            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
               &#8203;
             </span>
             <Transition.Child
@@ -188,12 +179,10 @@ export default function ContactForm() {
             >
               <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div className="bg-white px-8 mt-8 mb-4">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-500">
-                    Success!
-                  </h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-500">Success!</h3>
                   <p className="mt-2 text-lg sm:text-xl !leading-relaxed text-gray-500">
-                    The email has been sent. I will usually respond within the
-                    week unless I am taking a significant break.
+                    The email has been sent. I will usually respond within the week unless I am
+                    taking a significant break.
                   </p>
                 </div>
                 <div className="flex items-center justify-center mb-6">

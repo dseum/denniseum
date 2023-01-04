@@ -5,7 +5,7 @@ import {
   MusicalNoteIcon,
   BookmarkSquareIcon,
   AtSymbolIcon,
-  ArrowDownIcon,
+  ArrowDownIcon
 } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 import { classNames, hashKey } from 'impulse-utils'
@@ -17,23 +17,23 @@ const pages = [
   {
     name: 'Projects',
     href: '/projects',
-    icon: CubeIcon,
+    icon: CubeIcon
   },
   {
     name: 'Cello',
     href: '/cello',
-    icon: MusicalNoteIcon,
+    icon: MusicalNoteIcon
   },
   {
     name: 'Journal',
     href: '/journal',
-    icon: BookmarkSquareIcon,
+    icon: BookmarkSquareIcon
   },
   {
     name: 'Contact',
     href: '/contact',
-    icon: AtSymbolIcon,
-  },
+    icon: AtSymbolIcon
+  }
 ]
 
 export default function Menu() {
@@ -79,7 +79,7 @@ export default function Menu() {
       >
         {<page.icon className="w-6 h-6" />}
       </Orb>
-    )),
+    ))
   }
   return (
     <div className="fixed bottom-3 left-3 z-10 group flex gap-3">
@@ -105,7 +105,7 @@ function Orb(props) {
   const [hover, setHover] = useState(false)
   const [click, setClick] = useState(false)
   const [styleNames, styleNamesApi] = useSpring(() => ({
-    opacity: 0,
+    opacity: 0
   }))
   useEffect(() => {
     if (hover) {
@@ -141,7 +141,7 @@ function Orb(props) {
         className="absolute left-0 top-0 h-12 ml-[4.25rem] flex items-center"
         style={{
           marginTop: 4 + 52 * props.offset,
-          ...styleNames,
+          ...styleNames
         }}
       >
         <div className="bg-indigo-200 py-1 px-2 rounded-md">{props.name}</div>
@@ -154,11 +154,11 @@ function ToggleOrb(props) {
   const [hover, setHover] = useState(false)
   const [click, setClick] = useState(false)
   const [styleNames, styleNamesApi] = useSpring(() => ({
-    opacity: 0,
+    opacity: 0
   }))
   const [styleRotate, styleRotateApi] = useSpring(() => ({
     transform: 'rotate(0deg)',
-    borderColor: '#d1d5db',
+    borderColor: '#d1d5db'
   }))
   useEffect(() => {
     if (hover) {
@@ -171,12 +171,12 @@ function ToggleOrb(props) {
     if (props.open) {
       styleRotateApi.start({
         transform: 'rotate(0deg)',
-        borderColor: '#d1d5db',
+        borderColor: '#d1d5db'
       })
     } else {
       styleRotateApi.start({
         transform: 'rotate(180deg)',
-        borderColor: '#ffffff',
+        borderColor: '#ffffff'
       })
     }
   }, [props.open, styleRotateApi])
@@ -210,9 +210,7 @@ function ToggleOrb(props) {
           className="absolute left-0 top-1 h-12 ml-16 flex items-center"
           style={styleNames}
         >
-          <div className="bg-indigo-200 py-1 px-2 rounded-md">
-            {props.open ? 'Close' : 'Open'}
-          </div>
+          <div className="bg-indigo-200 py-1 px-2 rounded-md">{props.open ? 'Close' : 'Open'}</div>
         </animated.div>
       </div>
     </div>

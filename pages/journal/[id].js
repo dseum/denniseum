@@ -19,7 +19,7 @@ export default function Post(props) {
     readTime: Math.round(
       unified()
         .use(rehypeParse, {
-          fragment: true,
+          fragment: true
         })
         .use(rehypeStringify)
         .processSync(props.post.rawContent)
@@ -28,7 +28,7 @@ export default function Post(props) {
     ),
     content: unified()
       .use(rehypeParse, {
-        fragment: true,
+        fragment: true
       })
       .use(rehypeReact, {
         createElement: createElement,
@@ -36,28 +36,23 @@ export default function Post(props) {
           p: Markdown.P,
           pre: Markdown.Pre,
           div: Markdown.Div,
-          code: Markdown.Code,
-        },
+          code: Markdown.Code
+        }
       })
-      .processSync(props.post.rawContent).result,
+      .processSync(props.post.rawContent).result
   }
   return (
     <>
       <Head>
         <title>{`Dennis Eum - ${_template.title}`}</title>
         <meta name="robots" content="none"></meta>
-        <link
-          rel="canonical"
-          href={`https://denniseum.com/blog/${_template.id}`}
-        ></link>
+        <link rel="canonical" href={`https://denniseum.com/blog/${_template.id}`}></link>
       </Head>
       <div className="max-w-3xl mx-auto px-dynamic lg:px-0">
         <div className="text-xl sm:text-2xl text-gray-400 my-3 lg:my-6">
           <InlineLink href="/journal">Back to Journal</InlineLink>
         </div>
-        <h1 className="text-3xl sm:text-5xl py-1 font-bold mr-2">
-          {_template.title}
-        </h1>
+        <h1 className="text-3xl sm:text-5xl py-1 font-bold mr-2">{_template.title}</h1>
         <div className="text-xl sm:text-2xl text-gray-400 my-3 lg:my-6">
           <span>Posted on {_template.date}</span>
           <div className="hidden sm:inline-block">
@@ -85,7 +80,7 @@ export const getStaticPaths = async () => {
   const paths = getAllPostIds()
   return {
     paths,
-    fallback: false,
+    fallback: false
   }
 }
 
@@ -93,7 +88,7 @@ export const getStaticProps = async ({ params }) => {
   const post = await getPost(params.id)
   return {
     props: {
-      post,
-    },
+      post
+    }
   }
 }

@@ -27,14 +27,14 @@ function BannerSection() {
     from: { opacity: 0, scale: 0.95 },
     to: { opacity: 1, scale: 1 },
     config: {
-      duration: 1000,
-    },
+      duration: 1000
+    }
   })
   const [styleVisible, styleVisibleApi] = useSpring(() => ({
     opacity: 1,
     config: {
-      duration: 100,
-    },
+      duration: 100
+    }
   }))
   useEffect(() => {
     setHeight(window.innerHeight)
@@ -48,16 +48,16 @@ function BannerSection() {
         styleVisibleApi.start({
           opacity: 1,
           config: {
-            duration: 100,
-          },
+            duration: 100
+          }
         })
       } else {
         styleVisibleApi.stop()
         styleVisibleApi.start({
           opacity: 0,
           config: {
-            duration: 100,
-          },
+            duration: 100
+          }
         })
       }
     }
@@ -72,7 +72,7 @@ function BannerSection() {
     const currSelfRef = selfRef.current
     window.scroll({
       top: currSelfRef.scrollTop + currSelfRef.scrollHeight,
-      behavior: 'smooth',
+      behavior: 'smooth'
     })
   }
   return (
@@ -107,17 +107,15 @@ function BioSection() {
           Hello!
         </h1>
         <p>
-          My name is <span className="font-bold">Dennis Eum</span>, and I am a
-          software engineer and mathematician studying at Harvard. Based in
-          Minnesota, I love experimenting with creations and am also an avid
-          cellist and debater.
+          My name is <span className="font-bold">Dennis Eum</span>, and I am a software engineer and
+          mathematician studying at Harvard. Based in Minnesota, I love experimenting with creations
+          and am also an avid cellist and debater.
         </p>
         <p>
-          I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>,
-          and <mark>JS</mark> are the four pillars of interactive software. With
-          these languages, coding is a combination of aesthetics and utility,
-          and therefore, designing programs with every aspect in mind is
-          crucial.
+          I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>, and <mark>JS</mark>{' '}
+          are the four pillars of interactive software. With these languages, coding is a
+          combination of aesthetics and utility, and therefore, designing programs with every aspect
+          in mind is crucial.
         </p>
         <p>
           You can request my full resume and send me messages{' '}

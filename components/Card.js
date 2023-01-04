@@ -4,10 +4,10 @@ import { subComponent } from 'impulse-utils'
 export default function Card(props) {
   const _template = {
     icon: createElement(props.icon, {
-      className: 'h-7 w-7',
+      className: 'h-7 w-7'
     }),
     title: subComponent.select(props.children, 'Title'),
-    content: subComponent.select(props.children, 'Content'),
+    content: subComponent.select(props.children, 'Content')
   }
   return (
     <div className="border border-gray-100 shadow-md rounded-md px-5 py-3 md:py-4">

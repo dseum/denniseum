@@ -8,10 +8,7 @@ import { useEffect } from 'react'
 import shave from 'shave'
 
 export default function Projects() {
-  const shaver = debounce(
-    () => shave('.shave-3', 28 * 3, { classname: 'shave-3' }),
-    10
-  )
+  const shaver = debounce(() => shave('.shave-3', 28 * 3, { classname: 'shave-3' }), 10)
   useEffect(() => {
     shaver()
     window.addEventListener('resize', shaver)
@@ -22,21 +19,19 @@ export default function Projects() {
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: config.gentle,
-    trail: 40,
+    trail: 40
   })
   const _template = {
     projects: transitions((style, project) => (
       <animated.div style={style}>
         <ModalItem href={project.href}>
           <ModalItem.Title>{project.name}</ModalItem.Title>
-          <ModalItem.Preview>
-            {`${project.description} ${project.content}`}
-          </ModalItem.Preview>
+          <ModalItem.Preview>{`${project.description} ${project.content}`}</ModalItem.Preview>
           <ModalItem.Stack>{project.stack.join(', ')}</ModalItem.Stack>
           <ModalItem.Content>{project.content}</ModalItem.Content>
         </ModalItem>
       </animated.div>
-    )),
+    ))
   }
   return (
     <Layout>
@@ -51,9 +46,7 @@ export default function Projects() {
         </p>
         <div className="mt-6">
           <List>
-            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
-              {_template.projects}
-            </div>
+            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">{_template.projects}</div>
           </List>
         </div>
       </Layout.Content>

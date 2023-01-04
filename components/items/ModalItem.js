@@ -1,9 +1,6 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import {
-  ArrowTopRightOnSquareIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
+import { ArrowTopRightOnSquareIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { subComponent } from 'impulse-utils'
 
 export default function ModalItem(props) {
@@ -13,7 +10,7 @@ export default function ModalItem(props) {
     title: subComponent.select(props.children, 'Title'),
     preview: subComponent.select(props.children, 'Preview'),
     stack: subComponent.select(props.children, 'Stack'),
-    content: subComponent.select(props.children, 'Content'),
+    content: subComponent.select(props.children, 'Content')
   }
   return (
     <>
@@ -23,12 +20,8 @@ export default function ModalItem(props) {
           type="button"
           onClick={() => setOpen(true)}
         >
-          <span className="text-gray-500 text-base sm:text-lg font-bold">
-            {_template.title}
-          </span>
-          <p className="text-gray-400 text-base sm:text-lg shave-3">
-            {_template.preview}
-          </p>
+          <span className="text-gray-500 text-base sm:text-lg font-bold">{_template.title}</span>
+          <p className="text-gray-400 text-base sm:text-lg shave-3">{_template.preview}</p>
         </button>
       </li>
       <Transition.Root show={open} as={Fragment}>
@@ -52,10 +45,7 @@ export default function ModalItem(props) {
             >
               <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
-            <span
-              className="hidden sm:inline-block sm:align-middle sm:h-screen"
-              aria-hidden="true"
-            >
+            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
               &#8203;
             </span>
             <Transition.Child
@@ -84,9 +74,7 @@ export default function ModalItem(props) {
                       _template.title
                     )}
                   </h3>
-                  <div className="text-gray-500 mt-4 mb-3">
-                    {_template.stack}
-                  </div>
+                  <div className="text-gray-500 mt-4 mb-3">{_template.stack}</div>
                   <p className="text-lg sm:text-xl !leading-relaxed text-gray-500">
                     {_template.content}
                   </p>

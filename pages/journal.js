@@ -9,10 +9,7 @@ import shave from 'shave'
 import { useEffect } from 'react'
 
 export default function Journal(props) {
-  const shaver = debounce(
-    () => shave('.shave-3', 28 * 3, { classname: 'shave-3' }),
-    10
-  )
+  const shaver = debounce(() => shave('.shave-3', 28 * 3, { classname: 'shave-3' }), 10)
   useEffect(() => {
     shaver()
     window.addEventListener('resize', shaver)
@@ -24,7 +21,7 @@ export default function Journal(props) {
     leave: { opacity: 0 },
     config: config.gentle,
     trail: 40,
-    keys: postData => hashKey(JSON.stringify(postData)),
+    keys: postData => hashKey(JSON.stringify(postData))
   })
   const _template = {
     warning: props.posts.length === 0 && 'No posts published yet.',
@@ -32,7 +29,7 @@ export default function Journal(props) {
       <animated.div style={style}>
         <PostItem data={postData} />
       </animated.div>
-    )),
+    ))
   }
   return (
     <Layout>
@@ -58,7 +55,7 @@ export const getStaticProps = () => {
   const posts = getSortedPosts()
   return {
     props: {
-      posts,
-    },
+      posts
+    }
   }
 }

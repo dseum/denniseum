@@ -1,7 +1,4 @@
-import {
-  ArrowTopRightOnSquareIcon,
-  EyeSlashIcon,
-} from '@heroicons/react/24/outline'
+import { ArrowTopRightOnSquareIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 
 const DefaultItem = props => {
   if (props.href) {

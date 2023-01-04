@@ -5,7 +5,7 @@ export default function Layout(props) {
   const _template = {
     head: subComponent.select(props.children, 'Head'),
     title: subComponent.select(props.children, 'Title'),
-    content: subComponent.select(props.children, 'Content'),
+    content: subComponent.select(props.children, 'Content')
   }
   return (
     <>

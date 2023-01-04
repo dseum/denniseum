@@ -12,11 +12,11 @@ const PostItem = props => {
     date: DateTime.fromISO(props.data.date).toFormat('DD'),
     preview: unified()
       .use(rehypeParse, {
-        fragment: true,
+        fragment: true
       })
       .use(rehypeStringify)
       .processSync(props.data.rawContent)
-      .toString(),
+      .toString()
   }
   return (
     <li>
@@ -30,9 +30,7 @@ const PostItem = props => {
             <span>&#183;</span>
             <span>{_template.title}</span>
           </div>
-          <p className="text-gray-400 text-base sm:text-lg shave-3">
-            {_template.preview}
-          </p>
+          <p className="text-gray-400 text-base sm:text-lg shave-3">{_template.preview}</p>
         </div>
         <div className="hidden lg:flex items-center justify-center w-24">
           <BookOpenIcon className="w-8 h-8 group-hover:animate-little-bounce duration-75" />
