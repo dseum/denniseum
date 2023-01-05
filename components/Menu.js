@@ -41,26 +41,45 @@ const pages = [
 
 export default function Menu() {
   const { pathname } = useRouter()
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [count, setCount] = useState(0)
+  const [visible, setVisible] = useState(true)
   const [currentY, setCurrentY] = useState(0)
   const [pagesTrails, api] = useTrail(
     pages.length,
-    () => ({
-      from: { opacity: 0, x: -130 },
-      to: { opacity: 1, x: 0 }
-    }),
+    {
+      opacity: 0,
+      x: -130
+    },
     []
   )
   useEffect(() => {
     setOpen(false)
   }, [pathname])
   useEffect(() => {
+    console.log(count)
     if (open) {
-      api.start({ opacity: 1, x: 0 })
+      setCount(0)
+      setVisible(true)
+      api.start({
+        opacity: 1,
+        x: 0
+      })
     } else {
-      api.start({ opacity: 0, x: -130 })
+      api.start({
+        opacity: 0,
+        x: -130,
+        onRest() {
+          setCount(count + 1)
+        }
+      })
     }
-  }, [open, api])
+  }, [open, api, count])
+  useEffect(() => {
+    if (count === pages.length - 3) {
+      setVisible(false)
+    }
+  }, [count])
   useEffect(() => {
     const updateOpen = throttle(() => {
       const { scrollY } = window
@@ -73,22 +92,24 @@ export default function Menu() {
     return () => document.removeEventListener('scroll', updateOpen)
   }, [currentY])
   const _template = {
-    pages: pagesTrails.map((style, index) => {
-      const page = pages[index]
-      return (
-        <animated.div key={hashKey(page.href)} style={style} className="flex">
-          <Link
-            className={classNames(
-              'flex-shrink text-xl uppercase font-bold tracking-wider flex items-center justify-start h-9 px-2 border border-gray-700 bg-[#f4f0e8] hover:bg-[#e7dfce] transition-colors duration-200 rounded',
-              pathname === page.href ? 'text-gray-900' : 'text-gray-500'
-            )}
-            href={page.href}
-          >
-            {page.name}
-          </Link>
-        </animated.div>
-      )
-    })
+    pages: visible
+      ? pagesTrails.map((style, index) => {
+          const page = pages[index]
+          return (
+            <animated.div key={hashKey(page.href)} style={style} className="flex">
+              <Link
+                className={classNames(
+                  'flex-shrink text-xl uppercase font-bold tracking-wider flex items-center justify-start h-9 px-2 border border-gray-700 bg-[#f4f0e8] hover:bg-[#e7dfce] transition-colors duration-200 rounded',
+                  pathname === page.href ? 'text-gray-900' : 'text-gray-500'
+                )}
+                href={page.href}
+              >
+                {page.name}
+              </Link>
+            </animated.div>
+          )
+        })
+      : []
   }
   return (
     <div className="fixed bottom-3 left-3 lg:bottom-6 lg:left-6 z-10">
