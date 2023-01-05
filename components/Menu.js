@@ -79,7 +79,7 @@ export default function Menu() {
         <animated.div key={hashKey(page.href)} style={style} className="flex">
           <Link
             className={classNames(
-              'flex-shrink text-xl uppercase font-bold tracking-wider flex items-center justify-start h-9 px-2 border border-gray-700 bg-[#f4f0e8] hover:bg-[#e7dfce] transition-colors duration-200',
+              'flex-shrink text-xl uppercase font-bold tracking-wider flex items-center justify-start h-9 px-2 border border-gray-700 bg-[#f4f0e8] hover:bg-[#e7dfce] transition-colors duration-200 rounded',
               pathname === page.href ? 'text-gray-900' : 'text-gray-500'
             )}
             href={page.href}
@@ -96,7 +96,7 @@ export default function Menu() {
         {_template.pages}
         <div>
           <button
-            className="text-gray-900 text-xl uppercase font-bold tracking-wider flex items-center justify-center h-9 px-2 border border-gray-700 animate-gradient"
+            className="text-gray-900 text-xl uppercase font-bold tracking-wider flex items-center justify-center h-9 px-2 border border-gray-700 animate-gradient rounded"
             type="button"
             onClick={() => setOpen(!open)}
           >

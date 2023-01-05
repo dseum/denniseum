@@ -30,7 +30,7 @@ const PostItem = props => {
             <span>&#183;</span>
             <span>{_template.title}</span>
           </div>
-          <p className="text-gray-500 text-base sm:text-lg shave-3 h-[5.25rem] overflow-hidden">
+          <p className="text-gray-500 text-base sm:text-lg shave-3 h-[4.5rem] sm:h-[5.25rem] overflow-hidden">
             {_template.preview}
           </p>
         </div>

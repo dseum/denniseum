@@ -21,7 +21,7 @@ export default function ModalItem(props) {
           onClick={() => setOpen(true)}
         >
           <span className="text-gray-600 text-base sm:text-lg font-bold">{_template.title}</span>
-          <p className="text-gray-500 text-base sm:text-lg shave-3 h-[5.25rem] overflow-hidden">
+          <p className="text-gray-500 text-base sm:text-lg shave-3 h-[4.5rem] sm:h-[5.25rem] overflow-hidden">
             {_template.preview}
           </p>
         </button>
