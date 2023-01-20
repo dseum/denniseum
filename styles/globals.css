@@ -7,70 +7,70 @@
     font-family: 'Inter';
     font-weight: 400;
     font-style: normal;
-    src: url(/assets/fonts/Inter/Inter-Regular.woff) format('woff');
+    src: url(/fonts/Inter/Inter-Regular.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Inter';
     font-weight: 400;
     font-style: italic;
-    src: url(/assets/fonts/Inter/Inter-Italic.woff) format('woff');
+    src: url(/fonts/Inter/Inter-Italic.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Inter';
     font-weight: 700;
     font-style: normal;
-    src: url(/assets/fonts/Inter/Inter-Bold.woff) format('woff');
+    src: url(/fonts/Inter/Inter-Bold.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Inter';
     font-weight: 700;
     font-style: italic;
-    src: url(/assets/fonts/Inter/Inter-BoldItalic.woff) format('woff');
+    src: url(/fonts/Inter/Inter-BoldItalic.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Inter';
     font-weight: 300;
     font-style: normal;
-    src: url(/assets/fonts/Inter/Inter-Light.woff) format('woff');
+    src: url(/fonts/Inter/Inter-Light.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Inter';
     font-weight: 300;
     font-style: italic;
-    src: url(/assets/fonts/Inter/Inter-LightItalic.woff) format('woff');
+    src: url(/fonts/Inter/Inter-LightItalic.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Tinos';
     font-weight: 400;
     font-style: normal;
-    src: url(/assets/fonts/Tinos/Tinos-Regular.woff) format('woff');
+    src: url(/fonts/Tinos/Tinos-Regular.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Tinos';
     font-weight: 400;
     font-style: italic;
-    src: url(/assets/fonts/Tinos/Tinos-Italic.woff) format('woff');
+    src: url(/fonts/Tinos/Tinos-Italic.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Tinos';
     font-weight: 700;
     font-style: normal;
-    src: url(/assets/fonts/Tinos/Tinos-Bold.woff) format('woff');
+    src: url(/fonts/Tinos/Tinos-Bold.woff) format('woff');
     font-display: swap;
   }
   @font-face {
     font-family: 'Tinos';
     font-weight: 700;
     font-style: italic;
-    src: url(/assets/fonts/Tinos/Tinos-BoldItalic.woff) format('woff');
+    src: url(/fonts/Tinos/Tinos-BoldItalic.woff) format('woff');
     font-display: swap;
   }
   body {

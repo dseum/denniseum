@@ -1,5 +1,4 @@
 import { useSpring, animated } from '@react-spring/web'
-import signatureImage from '@/assets/images/signature.jpg'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
@@ -70,14 +69,20 @@ export default function Home() {
       </Head>
       <div
         className={classNames(
-          'relative flex snap-start items-center justify-center',
+          'relative flex items-center justify-center',
           height === 0 && '!h-screen'
         )}
         style={{ height }}
         ref={selfRef}
       >
         <animated.div className="w-52" style={styleSignature}>
-          <Image src={signatureImage} alt="Signature" priority />
+          <Image
+            src="/images/signature.jpg"
+            width={757}
+            height={382}
+            alt="Signature"
+            priority
+          />
         </animated.div>
         <animated.button
           className="absolute bottom-8"

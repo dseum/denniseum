@@ -8,7 +8,6 @@ import rehypeParse from 'rehype-parse'
 import rehypeReact from 'rehype-react'
 import { createElement } from 'react'
 import rehypeStringify from 'rehype-stringify/lib'
-import signatureImage from '@/assets/images/signature.jpg'
 import InlineLink from '@/components/InlineLink'
 
 export default function Post(props) {
@@ -70,7 +69,12 @@ export default function Post(props) {
         </div>
         <div className="my-6 flex items-center justify-center lg:my-10">
           <div className="w-44">
-            <Image src={signatureImage} alt="" />
+            <Image
+              src="/images/signature.jpg"
+              width={757}
+              height={382}
+              alt="Signature"
+            />
           </div>
         </div>
         <div className="mt-4 text-xl text-gray-400 sm:text-2xl lg:my-6">

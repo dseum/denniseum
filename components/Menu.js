@@ -57,7 +57,6 @@ export default function Menu() {
     setOpen(false)
   }, [pathname])
   useEffect(() => {
-    console.log(count)
     if (open) {
       setCount(0)
       setVisible(true)
