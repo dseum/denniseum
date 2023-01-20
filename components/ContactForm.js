@@ -22,7 +22,10 @@ export default function ContactForm() {
   const [showValidation, setShowValidation] = useState(false)
   const [open, setOpen] = useState(false)
   const verifyCodeRef = useRef(null)
-  const randomIntSet = () => [Math.floor(Math.random() * 7 + 1), Math.floor(Math.random() * 7 + 1)]
+  const randomIntSet = () => [
+    Math.floor(Math.random() * 7 + 1),
+    Math.floor(Math.random() * 7 + 1)
+  ]
   const [verifySet, setVerifySet] = useState([1, 1])
   useEffect(() => {
     const app = initializeApp(firebaseConfig)
@@ -44,20 +47,23 @@ export default function ContactForm() {
     if (e.target.checkValidity()) {
       setProcessing(true)
       const now = DateTime.local().setZone('America/Chicago')
-      setDoc(doc(firestore, 'responses', now.toFormat('yyyy-MM-dd hh:mm:ss a')), {
-        to: atob('ZHNldW0yMkBnbWFpbC5jb20='),
-        message: {
-          subject: `Message @ ${now.toFormat('ff')}`,
-          html: `<b>Name:</b> ${`${data.first_name} ${data.last_name}`}<br><br><b>Email:</b> ${
-            data.email
-          }<br><br><b>Message:</b><br>${data.message}`
-        },
-        map: {
-          name: `${data.first_name} ${data.last_name}`,
-          email: data.email,
-          message: data.message
+      setDoc(
+        doc(firestore, 'responses', now.toFormat('yyyy-MM-dd hh:mm:ss a')),
+        {
+          to: atob('ZHNldW0yMkBnbWFpbC5jb20='),
+          message: {
+            subject: `Message @ ${now.toFormat('ff')}`,
+            html: `<b>Name:</b> ${`${data.first_name} ${data.last_name}`}<br><br><b>Email:</b> ${
+              data.email
+            }<br><br><b>Message:</b><br>${data.message}`
+          },
+          map: {
+            name: `${data.first_name} ${data.last_name}`,
+            email: data.email,
+            message: data.message
+          }
         }
-      })
+      )
         .then(() => {
           setOpen(true)
           setShowValidation(false)
@@ -81,17 +87,20 @@ export default function ContactForm() {
   return (
     <>
       <form
-        className={classNames(showValidation && 'show-validation', 'relative mb-3')}
+        className={classNames(
+          showValidation && 'show-validation',
+          'relative mb-3'
+        )}
         onSubmit={handleSubmit}
         noValidate
       >
         <fieldset className="grid grid-cols-1 gap-4 px-1" disabled={processing}>
           <div className="grid grid-cols-1 gap-4">
             <div>
-              <label className="text-gray-600 text-sm sm:text-base">
+              <label className="text-sm text-gray-600 sm:text-base">
                 Information: What is your personal contact?
               </label>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid gap-4 md:grid-cols-2">
                 <input
                   name="first_name"
                   type="text"
@@ -127,7 +136,7 @@ export default function ContactForm() {
             ></textarea>
           </div>
           <div>
-            <label className="text-gray-600 text-sm sm:text-base">
+            <label className="text-sm text-gray-600 sm:text-base">
               Verification: What is {verifySet[0]} times {verifySet[1]}?
             </label>
             <div className="flex flex-nowrap">
@@ -141,7 +150,7 @@ export default function ContactForm() {
                 required
               />
               <button
-                className="transition duration-200 border border-gray-400 rounded-md w-min shrink-0 ml-3 px-2 hover:border-gray-600 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 disabled:pointer-events-none disabled:cursor-default"
+                className="ml-3 w-min shrink-0 rounded-md border border-gray-400 px-2 text-gray-600 transition duration-200 hover:border-gray-600 hover:text-gray-900 focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800 disabled:pointer-events-none disabled:cursor-default"
                 type="submit"
               >
                 <ArrowRightIcon className="h-7 w-7" />
@@ -154,12 +163,12 @@ export default function ContactForm() {
         <Dialog
           as="div"
           static
-          className="fixed z-20 inset-0 overflow-y-auto"
+          className="fixed inset-0 z-20 overflow-y-auto"
           open={open}
           onClose={setOpen}
           initialFocus={cancelButtonRef}
         >
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-32 text-center sm:block sm:p-0">
+          <div className="flex min-h-screen items-end justify-center px-4 pt-4 pb-32 text-center sm:block sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -171,7 +180,10 @@ export default function ContactForm() {
             >
               <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+            <span
+              className="hidden sm:inline-block sm:h-screen sm:align-middle"
+              aria-hidden="true"
+            >
               &#8203;
             </span>
             <Transition.Child
@@ -183,20 +195,22 @@ export default function ContactForm() {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div className="bg-white px-8 mt-8 mb-4">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-500">Success!</h3>
-                  <p className="mt-2 text-lg sm:text-xl !leading-relaxed text-gray-500">
-                    The email has been sent. I will usually respond within the week unless I am
-                    taking a significant break.
+              <div className="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
+                <div className="mt-8 mb-4 bg-white px-8">
+                  <h3 className="text-2xl font-bold text-gray-500 sm:text-3xl">
+                    Success!
+                  </h3>
+                  <p className="mt-2 text-lg !leading-relaxed text-gray-500 sm:text-xl">
+                    The email has been sent. I will usually respond within the
+                    week unless I am taking a significant break.
                   </p>
                 </div>
-                <div className="flex items-center justify-center mb-6">
+                <div className="mb-6 flex items-center justify-center">
                   <button
                     type="button"
                     ref={cancelButtonRef}
                     onClick={() => setOpen(false)}
-                    className="border border-gray-300 bg-white transition-colors hover:bg-gray-100 duration-200 h-14 w-14 flex items-center justify-center rounded-full focus:outline-none"
+                    className="flex h-14 w-14 items-center justify-center rounded-full border border-gray-300 bg-white transition-colors duration-200 hover:bg-gray-100 focus:outline-none"
                   >
                     <XMarkIcon className="h-8 w-8" />
                   </button>

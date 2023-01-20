@@ -11,13 +11,16 @@ const CollapseItem = props => {
     <Disclosure as="li">
       {({ open }) => (
         <>
-          <Disclosure.Button className="transition-colors duration-200 hover:cursor-pointer hover:bg-gray-100 py-1 px-3 rounded text-gray-500 w-full flex items-center justify-between text-lg sm:text-xl">
+          <Disclosure.Button className="flex w-full items-center justify-between rounded py-1 px-3 text-lg text-gray-500 transition-colors duration-200 hover:cursor-pointer hover:bg-gray-100 sm:text-xl">
             <span>{_template.title}</span>
             <ChevronUpIcon
-              className={classNames(open && 'transform rotate-180', 'w-5 h-5 text-gray-500')}
+              className={classNames(
+                open && 'rotate-180 transform',
+                'h-5 w-5 text-gray-500'
+              )}
             />
           </Disclosure.Button>
-          <Disclosure.Panel className="px-3 mt-2 text-gray-400 text-base sm:text-lg">
+          <Disclosure.Panel className="mt-2 px-3 text-base text-gray-400 sm:text-lg">
             {_template.content}
           </Disclosure.Panel>
         </>

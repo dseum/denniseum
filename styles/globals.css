@@ -74,16 +74,16 @@
     font-display: swap;
   }
   body {
-    @apply bg-white font-sans antialiased text-gray-700 text-lg sm:text-xl scroll-smooth;
+    @apply scroll-smooth bg-white font-sans text-lg text-gray-700 antialiased sm:text-xl;
   }
   mark {
-    @apply bg-indigo-100 px-1 rounded-sm;
+    @apply rounded-sm bg-indigo-100 px-1;
   }
   input {
-    @apply border border-gray-400 rounded-md w-full h-12 focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 px-3 placeholder-gray-600 transition-all duration-200 disabled:bg-gray-100;
+    @apply h-12 w-full rounded-md border border-gray-400 px-3 placeholder-gray-600 transition-all duration-200 focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800 disabled:bg-gray-100;
   }
   textarea {
-    @apply border border-gray-400 rounded-md w-full min-h-[12rem] focus:outline-none focus:ring-1 focus:ring-gray-800 focus:border-gray-800 p-3 placeholder-gray-600 transition-all duration-200 disabled:bg-gray-100 align-top;
+    @apply min-h-[12rem] w-full rounded-md border border-gray-400 p-3 align-top placeholder-gray-600 transition-all duration-200 focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800 disabled:bg-gray-100;
   }
 }
 
@@ -171,5 +171,5 @@
 
 .show-validation input:invalid,
 .show-validation textarea:invalid {
-  @apply border-red-500 focus:ring-red-500 transition-all duration-200;
+  @apply border-red-500 transition-all duration-200 focus:ring-red-500;
 }

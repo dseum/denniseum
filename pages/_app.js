@@ -8,9 +8,23 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <link rel="icon" type="image/ico" href="/favicon.ico"></link>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"></link>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"></link>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        ></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        ></link>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        ></link>
         <title>Dennis Eum</title>
         <meta name="author" content="Dennis Eum"></meta>
         <meta
@@ -21,7 +35,7 @@ function MyApp({ Component, pageProps }) {
           cellist and debater."
         ></meta>
       </Head>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex min-h-screen flex-col">
         <Menu />
         <main className="grow">
           <Component {...pageProps} />

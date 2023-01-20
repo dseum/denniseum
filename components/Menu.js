@@ -96,10 +96,14 @@ export default function Menu() {
       ? pagesTrails.map((style, index) => {
           const page = pages[index]
           return (
-            <animated.div key={hashKey(page.href)} style={style} className="flex">
+            <animated.div
+              key={hashKey(page.href)}
+              style={style}
+              className="flex"
+            >
               <Link
                 className={classNames(
-                  'flex-shrink text-xl uppercase font-bold tracking-wider flex items-center justify-start h-9 px-2 border border-gray-700 bg-[#f4f0e8] hover:bg-[#e7dfce] transition-colors duration-200 rounded',
+                  'flex h-9 flex-shrink items-center justify-start rounded border border-gray-700 bg-[#f4f0e8] px-2 text-xl font-bold uppercase tracking-wider transition-colors duration-200 hover:bg-[#e7dfce]',
                   pathname === page.href ? 'text-gray-900' : 'text-gray-500'
                 )}
                 href={page.href}
@@ -112,12 +116,12 @@ export default function Menu() {
       : []
   }
   return (
-    <div className="fixed bottom-3 left-3 lg:bottom-6 lg:left-6 z-10">
-      <div className="p-1 grid space-y-1 gap-3 overflow-hidden">
+    <div className="fixed bottom-3 left-3 z-10 lg:bottom-6 lg:left-6">
+      <div className="grid gap-3 space-y-1 overflow-hidden p-1">
         {_template.pages}
         <div>
           <button
-            className="text-gray-900 text-xl uppercase font-bold tracking-wider flex items-center justify-center h-9 px-2 border border-gray-700 animate-gradient rounded"
+            className="animate-gradient flex h-9 items-center justify-center rounded border border-gray-700 px-2 text-xl font-bold uppercase tracking-wider text-gray-900"
             type="button"
             onClick={() => setOpen(!open)}
           >

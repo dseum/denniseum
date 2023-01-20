@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="px-dynamic py-4 md:py-6 text-right grid gap-1">
+    <footer className="px-dynamic grid gap-1 py-4 text-right md:py-6">
       <div>
         <a
           href="https://en.wikipedia.org/wiki/A_Portrait_of_the_Artist_as_a_Young_Man"

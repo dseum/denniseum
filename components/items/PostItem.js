@@ -21,21 +21,21 @@ const PostItem = props => {
   return (
     <li>
       <Link
-        className="border border-gray-100 shadow-md py-3 px-5 rounded-md flex justify-between hover:bg-gray-100 transition-colors duration-300 group"
+        className="group flex justify-between rounded-md border border-gray-100 py-3 px-5 shadow-md transition-colors duration-300 hover:bg-gray-100"
         href={`/journal/${_template.id}`}
       >
         <div className="max-w-md">
-          <div className="flex items-center gap-2 text-base sm:text-lg font-bold text-gray-600">
+          <div className="flex items-center gap-2 text-base font-bold text-gray-600 sm:text-lg">
             <span>{_template.date}</span>
             <span>&#183;</span>
             <span>{_template.title}</span>
           </div>
-          <p className="text-gray-500 text-base sm:text-lg shave-3 h-[4.5rem] sm:h-[5.25rem] overflow-hidden">
+          <p className="shave-3 h-[4.5rem] overflow-hidden text-base text-gray-500 sm:h-[5.25rem] sm:text-lg">
             {_template.preview}
           </p>
         </div>
-        <div className="hidden lg:flex items-center justify-center w-24">
-          <BookOpenIcon className="w-8 h-8 group-hover:animate-little-bounce duration-75" />
+        <div className="hidden w-24 items-center justify-center lg:flex">
+          <BookOpenIcon className="group-hover:animate-little-bounce h-8 w-8 duration-75" />
         </div>
       </Link>
     </li>

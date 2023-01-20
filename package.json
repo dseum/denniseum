@@ -37,7 +37,8 @@
     "firebase": "^9.14.0",
     "luxon": "^3.1.0",
     "postcss": "^8.4.19",
-    "prettier": "^2.8.1",
+    "prettier": "^2.8.3",
+    "prettier-plugin-tailwindcss": "^0.2.1",
     "shave": "^5.0.2",
     "tailwindcss": "^3.2.4"
   }

@@ -46,7 +46,9 @@ export default function Projects() {
         </p>
         <div className="mt-6">
           <List>
-            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">{_template.projects}</div>
+            <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
+              {_template.projects}
+            </div>
           </List>
         </div>
       </Layout.Content>

@@ -46,16 +46,19 @@ export default function Post(props) {
       <Head>
         <title>{`Dennis Eum - ${_template.title}`}</title>
         <meta name="robots" content="none"></meta>
-        <link rel="canonical" href={`https://denniseum.com/blog/${_template.id}`}></link>
+        <link
+          rel="canonical"
+          href={`https://denniseum.com/blog/${_template.id}`}
+        ></link>
       </Head>
-      <div className="max-w-3xl mx-auto px-dynamic">
-        <div className="text-xl sm:text-2xl text-gray-400 mt-6">
+      <div className="px-dynamic mx-auto max-w-3xl">
+        <div className="mt-6 text-xl text-gray-400 sm:text-2xl">
           <InlineLink href="/journal">Back to Journal</InlineLink>
         </div>
         <div className="my-1 mt-6 sm:mt-7">
-          <h1 className="text-4xl sm:text-5xl font-bold">{_template.title}</h1>
+          <h1 className="text-4xl font-bold sm:text-5xl">{_template.title}</h1>
         </div>
-        <div className="text-xl sm:text-2xl text-gray-400 my-5 sm:my-6">
+        <div className="my-5 text-xl text-gray-400 sm:my-6 sm:text-2xl">
           <span>Posted on {_template.date}</span>
           <div className="hidden sm:inline-block">
             <span className="mx-2">&#183;</span>
@@ -65,12 +68,12 @@ export default function Post(props) {
         <div className="font-serif !leading-loose !tracking-wide">
           <Markdown>{_template.content}</Markdown>
         </div>
-        <div className="flex items-center justify-center my-6 lg:my-10">
+        <div className="my-6 flex items-center justify-center lg:my-10">
           <div className="w-44">
             <Image src={signatureImage} alt="" />
           </div>
         </div>
-        <div className="text-xl sm:text-2xl text-gray-400 mt-4 lg:my-6">
+        <div className="mt-4 text-xl text-gray-400 sm:text-2xl lg:my-6">
           <InlineLink href="/journal">Back to Journal</InlineLink>
         </div>
       </div>

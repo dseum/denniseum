@@ -6,9 +6,9 @@ export default function Section(props) {
     content: subComponent.select(props.children, 'Content')
   }
   return (
-    <div className="flex items-center justify-center snap-start p-dynamic">
-      <div className="sm:w-2/3 lg:w-1/2 leading-loose space-y-8">
-        <h1 className="text-4xl sm:text-5xl font-bold !leading-tight lg:mr-8 underline decoration-wavy decoration-indigo-400">
+    <div className="p-dynamic flex snap-start items-center justify-center">
+      <div className="space-y-8 leading-loose sm:w-2/3 lg:w-1/2">
+        <h1 className="text-4xl font-bold !leading-tight underline decoration-indigo-400 decoration-wavy sm:text-5xl lg:mr-8">
           {_template.title}
         </h1>
         <div className="space-y-8">{_template.content}</div>

@@ -70,7 +70,7 @@ export default function Home() {
       </Head>
       <div
         className={classNames(
-          'flex items-center justify-center relative snap-start',
+          'relative flex snap-start items-center justify-center',
           height === 0 && '!h-screen'
         )}
         style={{ height }}
@@ -85,26 +85,28 @@ export default function Home() {
           type="button"
           onClick={handleScrollDown}
         >
-          <ChevronDownIcon className="w-8 h-8 animate-bounce" />
+          <ChevronDownIcon className="h-8 w-8 animate-bounce" />
         </animated.button>
       </div>
       <Section>
         <Section.Title>Hello!</Section.Title>
         <Section.Content>
           <p>
-            My name is <span className="font-bold">Dennis Eum</span>, and I am a software engineer
-            and mathematician studying at Harvard. Based in Minnesota, I love experimenting with
-            creations and am also an avid cellist and debater.
+            My name is <span className="font-bold">Dennis Eum</span>, and I am a
+            software engineer and mathematician studying at Harvard. Based in
+            Minnesota, I love experimenting with creations and am also an avid
+            cellist and debater.
           </p>
           <p>
-            I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>, and <mark>JS</mark>{' '}
-            are the four pillars of interactive software. While I am still in the early phase of
-            discovering all of what is out there, there is something special about those languages
-            in utility and design.
+            I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>,
+            and <mark>JS</mark> are the four pillars of interactive software.
+            While I am still in the early phase of discovering all of what is
+            out there, there is something special about those languages in
+            utility and design.
           </p>
           <p>
-            Together, they establish a very clear aesthetic of computer science that should be the
-            goal of every program.
+            Together, they establish a very clear aesthetic of computer science
+            that should be the goal of every program.
           </p>
         </Section.Content>
       </Section>

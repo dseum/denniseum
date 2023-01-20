@@ -11,8 +11,8 @@ export default function Layout(props) {
     <>
       <Head>{_template.head}</Head>
       <div className="px-dynamic flex justify-center">
-        <div className="sm:w-2/3 mt-8">
-          <h1 className="text-4xl sm:text-5xl font-bold !leading-tight lg:mr-8 underline decoration-wavy decoration-indigo-400">
+        <div className="mt-8 sm:w-2/3">
+          <h1 className="text-4xl font-bold !leading-tight underline decoration-indigo-400 decoration-wavy sm:text-5xl lg:mr-8">
             {_template.title}
           </h1>
           <div className="mt-6">{_template.content}</div>

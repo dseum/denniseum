@@ -14,7 +14,7 @@ Markdown.P = P
 
 function Pre(props) {
   return (
-    <pre className="bg-[#2e3440] p-6 !my-5 sm:!my-8 text-lg overflow-x-auto rounded">
+    <pre className="!my-5 overflow-x-auto rounded bg-[#2e3440] p-6 text-lg sm:!my-8">
       {props.children}
     </pre>
   )
@@ -23,7 +23,7 @@ Markdown.Pre = Pre
 
 function Code(props) {
   return (
-    <code className="bg-[#2e3440] text-[#D8DEE9] px-2 py-1 text-lg rounded inline-block">
+    <code className="inline-block rounded bg-[#2e3440] px-2 py-1 text-lg text-[#D8DEE9]">
       {props.children}
     </code>
   )
