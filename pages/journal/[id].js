@@ -68,12 +68,12 @@ export default function Post(props) {
           <Markdown>{_template.content}</Markdown>
         </div>
         <div className="my-6 flex items-center justify-center lg:my-10">
-          <div className="w-44">
+          <div className="relative h-24 w-44">
             <Image
+              className="object-contain"
               src="/images/signature.jpg"
-              width={757}
-              height={382}
               alt="Signature"
+              fill
             />
           </div>
         </div>
