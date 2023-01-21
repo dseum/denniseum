@@ -1,7 +1,6 @@
 import '@/styles/globals.css'
 import Head from 'next/head'
 import Footer from '@/components/Footer'
-import Menu from '@/components/Menu'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -30,13 +29,10 @@ function MyApp({ Component, pageProps }) {
         <meta
           name="description"
           content="Hello! My name is Dennis Eum, and I am a
-          software engineer and mathematician studying at Harvard. Based in
-          Minnesota, I love experimenting with creations and am also an avid
-          cellist and debater."
+          software engineer and mathematician studying at Harvard. Originally from Minnesota, I currently work at CESO and lead tech at HackHarvard."
         ></meta>
       </Head>
       <div className="flex min-h-screen flex-col">
-        <Menu />
         <main className="grow">
           <Component {...pageProps} />
         </main>

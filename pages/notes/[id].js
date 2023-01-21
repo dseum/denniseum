@@ -52,7 +52,7 @@ export default function Post(props) {
       </Head>
       <div className="px-dynamic mx-auto max-w-3xl">
         <div className="mt-6 text-xl text-gray-400 sm:text-2xl">
-          <InlineLink href="/journal">Back to Journal</InlineLink>
+          <InlineLink href="/">Back to Index</InlineLink>
         </div>
         <div className="my-1 mt-6 sm:mt-7">
           <h1 className="text-4xl font-bold sm:text-5xl">{_template.title}</h1>
@@ -78,7 +78,7 @@ export default function Post(props) {
           </div>
         </div>
         <div className="mt-4 text-xl text-gray-400 sm:text-2xl lg:my-6">
-          <InlineLink href="/journal">Back to Journal</InlineLink>
+          <InlineLink href="/">Back to Index</InlineLink>
         </div>
       </div>
     </>

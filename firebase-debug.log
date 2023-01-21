@@ -1,0 +1,25 @@
+[debug] [2023-01-21T14:08:38.704Z] ----------------------------------------------------------------------
+[debug] [2023-01-21T14:08:38.705Z] Command:       /opt/homebrew/Cellar/node/19.4.0_1/bin/node /opt/homebrew/bin/firebase deploy
+[debug] [2023-01-21T14:08:38.706Z] CLI Version:   11.19.0
+[debug] [2023-01-21T14:08:38.706Z] Platform:      darwin
+[debug] [2023-01-21T14:08:38.706Z] Node Version:  v19.4.0
+[debug] [2023-01-21T14:08:38.706Z] Time:          Sat Jan 21 2023 09:08:38 GMT-0500 (Eastern Standard Time)
+[debug] [2023-01-21T14:08:38.706Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-01-21T14:08:38.738Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-01-21T14:08:38.739Z] > authorizing via signed-in user (dseum22@gmail.com)
+[debug] [2023-01-21T14:08:38.739Z] [iam] checking project denniseum-4b16e for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-01-21T14:08:38.740Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/denniseum-4b16e:testIamPermissions [none]
+[debug] [2023-01-21T14:08:38.740Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/denniseum-4b16e:testIamPermissions x-goog-quota-user=projects/denniseum-4b16e
+[debug] [2023-01-21T14:08:38.740Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/denniseum-4b16e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-01-21T14:08:38.944Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/denniseum-4b16e:testIamPermissions 200
+[debug] [2023-01-21T14:08:38.944Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/denniseum-4b16e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-01-21T14:08:38.944Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/denniseum-4b16e [none]
+[debug] [2023-01-21T14:08:39.276Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/denniseum-4b16e 200
+[debug] [2023-01-21T14:08:39.276Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/denniseum-4b16e {"projectId":"denniseum-4b16e","projectNumber":"423578505617","displayName":"denniseum","name":"projects/denniseum-4b16e","resources":{"hostingSite":"denniseum-4b16e","storageBucket":"denniseum-4b16e.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_c01252c0-e0c9-41ec-9d77-be581b83da1f"}
+[info] 
+[info] === Deploying to 'denniseum-4b16e'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-01-21T14:08:39.280Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/denniseum-4b16e/versions [none]
+[debug] [2023-01-21T14:08:39.280Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/denniseum-4b16e/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
