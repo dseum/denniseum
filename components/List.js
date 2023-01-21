@@ -1,9 +1,12 @@
 import { classNames } from 'impulse-utils'
+import { forwardRef } from 'react'
 
-export default function List(props) {
+function List(props, ref) {
   return (
-    <ol className={classNames('mt-1 space-y-2 md:mt-3', props.className)}>
+    <ol className={classNames('mt-1 md:mt-3', props.className)} ref={ref}>
       {props.children}
     </ol>
   )
 }
+
+export default forwardRef(List)

@@ -1,59 +1,28 @@
-import { useSpring, animated } from '@react-spring/web'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { classNames } from 'impulse-utils'
 import Head from 'next/head'
 import Section from '@/components/Section'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 
 export default function Home() {
   const selfRef = useRef(null)
   const [height, setHeight] = useState(0)
-  const styleSignature = useSpring({
-    from: { opacity: 0, scale: 0.95 },
-    to: { opacity: 1, scale: 1 },
-    config: {
-      duration: 1000
-    }
+  const [visible, setVisible] = useState(true)
+  const { scrollY } = useScroll()
+  useMotionValueEvent(scrollY, 'change', latest => {
+    const margin = (screen.width + 80) / 21
+    setVisible(latest < margin)
   })
-  const [styleVisible, styleVisibleApi] = useSpring(() => ({
-    opacity: 1,
-    config: {
-      duration: 100
-    }
-  }))
   useEffect(() => {
     setHeight(window.innerHeight)
-    const margin = (screen.width + 80) / 21
     const updateHeight = () => {
       setHeight(window.innerHeight)
     }
-    const updateVisible = () => {
-      const { scrollY } = window
-      if (scrollY < margin) {
-        styleVisibleApi.start({
-          opacity: 1,
-          config: {
-            duration: 100
-          }
-        })
-      } else {
-        styleVisibleApi.stop()
-        styleVisibleApi.start({
-          opacity: 0,
-          config: {
-            duration: 100
-          }
-        })
-      }
-    }
     window.addEventListener('resize', updateHeight)
-    document.addEventListener('scroll', updateVisible)
-    return () => {
-      window.removeEventListener('resize', updateHeight)
-      document.removeEventListener('scroll', updateVisible)
-    }
-  }, [styleVisibleApi])
+    return () => window.removeEventListener('resize', updateHeight)
+  }, [])
   const handleScrollDown = () => {
     const currSelfRef = selfRef.current
     window.scroll({
@@ -75,23 +44,32 @@ export default function Home() {
         style={{ height }}
         ref={selfRef}
       >
-        <animated.div className="w-52" style={styleSignature}>
+        <motion.div
+          className="relative h-32 w-52"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
           <Image
+            className="object-contain"
             src="/images/signature.jpg"
-            width={757}
-            height={382}
             alt="Signature"
+            fill
             priority
           />
-        </animated.div>
-        <animated.button
+        </motion.div>
+        <motion.button
           className="absolute bottom-8"
-          style={styleVisible}
           type="button"
           onClick={handleScrollDown}
+          animate={visible ? 'visible' : 'invisible'}
+          variants={{
+            visible: { opacity: 1, duration: 1 },
+            invisible: { opacity: 0, duration: 1 }
+          }}
         >
           <ChevronDownIcon className="h-8 w-8 animate-bounce" />
-        </animated.button>
+        </motion.button>
       </div>
       <Section>
         <Section.Title>Hello!</Section.Title>
@@ -106,12 +84,8 @@ export default function Home() {
             I believe <mark>C++</mark>, <mark>Rust</mark>, <mark>Python</mark>,
             and <mark>JS</mark> are the four pillars of interactive software.
             While I am still in the early phase of discovering all of what is
-            out there, there is something special about those languages in
-            utility and design.
-          </p>
-          <p>
-            Together, they establish a very clear aesthetic of computer science
-            that should be the goal of every program.
+            out there, there is something special about those languages that
+            establish a very clear aesthetic of programming.
           </p>
         </Section.Content>
       </Section>

@@ -2,11 +2,11 @@ import { getSortedPosts } from '@/lib/posts'
 import Layout from '@/components/Layout'
 import List from '@/components/List'
 import PostItem from '@/components/items/PostItem'
-import { useTransition, animated, config } from '@react-spring/web'
 import { hashKey } from 'impulse-utils'
 import { debounce } from 'lodash'
 import shave from 'shave'
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Journal(props) {
   useEffect(() => {
@@ -15,20 +15,23 @@ export default function Journal(props) {
     window.addEventListener('resize', shaver)
     return () => window.removeEventListener('resize', shaver)
   }, [])
-  const transitions = useTransition(props.posts, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.gentle,
-    trail: 40,
-    keys: postData => hashKey(JSON.stringify(postData))
-  })
+  const MotionList = motion(List)
   const _template = {
     warning: props.posts.length === 0 && 'No posts published yet.',
-    posts: transitions((style, postData) => (
-      <animated.div style={style}>
+    posts: props.posts.map(postData => (
+      <motion.div
+        key={hashKey(JSON.stringify(postData.title))}
+        variants={{
+          shown: {
+            opacity: 1
+          },
+          hidden: {
+            opacity: 0
+          }
+        }}
+      >
         <PostItem data={postData} />
-      </animated.div>
+      </motion.div>
     ))
   }
   return (
@@ -44,7 +47,20 @@ export default function Journal(props) {
         </p>
         <div className="mt-6">
           <span className="text-xl sm:text-2xl">{_template.warning}</span>
-          <List className="grid gap-4 sm:gap-6">{_template.posts}</List>
+          <MotionList
+            className="grid gap-4 sm:gap-6"
+            initial="hidden"
+            animate="shown"
+            variants={{
+              shown: {
+                transition: {
+                  staggerChildren: 0.07
+                }
+              }
+            }}
+          >
+            {_template.posts}
+          </MotionList>
         </div>
       </Layout.Content>
     </Layout>

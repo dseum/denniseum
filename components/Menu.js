@@ -7,9 +7,8 @@ import {
 } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 import { classNames, hashKey } from 'impulse-utils'
-import { animated, useTrail } from '@react-spring/web'
 import { useEffect, useState } from 'react'
-import { throttle } from 'lodash'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 
 const pages = [
   {
@@ -42,81 +41,66 @@ const pages = [
 export default function Menu() {
   const { pathname } = useRouter()
   const [open, setOpen] = useState(false)
-  const [count, setCount] = useState(0)
-  const [visible, setVisible] = useState(true)
-  const [currentY, setCurrentY] = useState(0)
-  const [pagesTrails, api] = useTrail(
-    pages.length,
-    {
-      opacity: 0,
-      x: -130
-    },
-    []
-  )
+  const { scrollY } = useScroll()
+  useMotionValueEvent(scrollY, 'change', latest => {
+    if (scrollY.prev < latest) {
+      setOpen(false)
+    }
+  })
   useEffect(() => {
     setOpen(false)
   }, [pathname])
-  useEffect(() => {
-    if (open) {
-      setCount(0)
-      setVisible(true)
-      api.start({
-        opacity: 1,
-        x: 0
-      })
-    } else {
-      api.start({
-        opacity: 0,
-        x: -130,
-        onRest() {
-          setCount(count + 1)
-        }
-      })
-    }
-  }, [open, api, count])
-  useEffect(() => {
-    if (count === pages.length - 3) {
-      setVisible(false)
-    }
-  }, [count])
-  useEffect(() => {
-    const updateOpen = throttle(() => {
-      const { scrollY } = window
-      if (currentY < scrollY) {
-        setOpen(false)
-      }
-      setCurrentY(scrollY)
-    }, 150)
-    document.addEventListener('scroll', updateOpen)
-    return () => document.removeEventListener('scroll', updateOpen)
-  }, [currentY])
   const _template = {
-    pages: visible
-      ? pagesTrails.map((style, index) => {
-          const page = pages[index]
-          return (
-            <animated.div
-              key={hashKey(page.href)}
-              style={style}
-              className="flex"
-            >
-              <Link
-                className={classNames(
-                  'flex h-9 flex-shrink items-center justify-start rounded border border-gray-700 bg-[#f4f0e8] px-2 text-xl font-bold uppercase tracking-wider transition-colors duration-200 hover:bg-[#e7dfce]',
-                  pathname === page.href ? 'text-gray-900' : 'text-gray-500'
-                )}
-                href={page.href}
-              >
-                {page.name}
-              </Link>
-            </animated.div>
-          )
-        })
-      : []
+    pages: pages.map(page => {
+      return (
+        <motion.div
+          className="flex"
+          key={hashKey(page.href)}
+          variants={{
+            open: {
+              opacity: 1,
+              display: 'flex'
+            },
+            closed: {
+              opacity: 0,
+              transitionEnd: {
+                display: 'none'
+              }
+            }
+          }}
+        >
+          <Link
+            className={classNames(
+              'flex h-9 flex-shrink items-center justify-start rounded border border-gray-700 bg-[#f4f0e8] px-2 text-xl font-bold uppercase tracking-wider transition-colors duration-200 hover:bg-[#e7dfce]',
+              pathname === page.href ? 'text-gray-900' : 'text-gray-500'
+            )}
+            href={page.href}
+          >
+            {page.name}
+          </Link>
+        </motion.div>
+      )
+    })
   }
   return (
     <div className="fixed bottom-3 left-3 z-10 lg:bottom-6 lg:left-6">
-      <div className="grid gap-3 space-y-1 overflow-hidden p-1">
+      <motion.div
+        className="grid gap-4 overflow-hidden p-1"
+        initial="closed"
+        animate={open ? 'open' : 'closed'}
+        variants={{
+          open: {
+            transition: {
+              staggerChildren: 0.07,
+              delayChildren: 0.2,
+              staggerDirection: -1
+            }
+          },
+          closed: {
+            transition: { staggerChildren: 0.05 }
+          }
+        }}
+      >
         {_template.pages}
         <div>
           <button
@@ -127,7 +111,7 @@ export default function Menu() {
             Menu
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

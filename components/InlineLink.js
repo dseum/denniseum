@@ -1,13 +1,9 @@
-import { useSpring } from '@react-spring/web'
 import { classNames } from 'impulse-utils'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function InlineLink(props) {
   const [internal, setInternal] = useState(false)
-  const _styles = {
-    link: useSpring()
-  }
   useEffect(() => {
     const tempEl = document.createElement('a')
     tempEl.href = props.href
@@ -21,7 +17,6 @@ export default function InlineLink(props) {
       <Link
         className={classNames(_classNames.link, props.className)}
         href={props.href}
-        style={_styles.link}
       >
         {props.children}
       </Link>

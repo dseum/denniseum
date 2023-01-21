@@ -2,10 +2,10 @@ import ModalItem from '@/components/items/ModalItem'
 import Layout from '@/components/Layout'
 import List from '@/components/List'
 import { projects } from '@/lib/data'
-import { config, useTransition, animated } from '@react-spring/web'
 import { debounce } from 'lodash'
 import { useEffect } from 'react'
 import shave from 'shave'
+import { motion } from 'framer-motion'
 
 export default function Projects() {
   useEffect(() => {
@@ -14,23 +14,27 @@ export default function Projects() {
     window.addEventListener('resize', shaver)
     return () => window.removeEventListener('resize', shaver)
   }, [])
-  const transitions = useTransition(projects, {
-    from: { opacity: 1 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.gentle,
-    trail: 40
-  })
+  const MotionList = motion(List)
   const _template = {
-    projects: transitions((style, project) => (
-      <animated.div style={style}>
+    projects: projects.map(project => (
+      <motion.div
+        key={project.name}
+        variants={{
+          shown: {
+            opacity: 1
+          },
+          hidden: {
+            opacity: 0
+          }
+        }}
+      >
         <ModalItem href={project.href}>
           <ModalItem.Title>{project.name}</ModalItem.Title>
           <ModalItem.Preview>{project.content}</ModalItem.Preview>
           <ModalItem.Stack>{project.stack.join(', ')}</ModalItem.Stack>
           <ModalItem.Content>{project.content}</ModalItem.Content>
         </ModalItem>
-      </animated.div>
+      </motion.div>
     ))
   }
   return (
@@ -45,11 +49,20 @@ export default function Projects() {
           These are some of my creations, which vary from apps, utilities, etc.
         </p>
         <div className="mt-6">
-          <List>
-            <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
-              {_template.projects}
-            </div>
-          </List>
+          <MotionList
+            className="grid gap-4 sm:gap-6 lg:grid-cols-2"
+            initial="hidden"
+            animate="shown"
+            variants={{
+              shown: {
+                transition: {
+                  staggerChildren: 0.07
+                }
+              }
+            }}
+          >
+            {_template.projects}
+          </MotionList>
         </div>
       </Layout.Content>
     </Layout>

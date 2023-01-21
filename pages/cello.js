@@ -4,44 +4,33 @@ import Card from '@/components/Card'
 import DefaultItem from '@/components/items/DefaultItem'
 import List from '@/components/List'
 import { cello } from '@/lib/data'
-import {
-  useTransition,
-  animated,
-  config,
-  useSpringRef,
-  useChain
-} from '@react-spring/web'
+import { motion } from 'framer-motion'
+import { hashKey } from 'impulse-utils'
 
 export default function Cello() {
-  const awardsTransitionRef = useSpringRef()
-  const awardsTransitions = useTransition(cello.awards, {
-    ref: awardsTransitionRef,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.gentle,
-    trail: 40
-  })
-  const recordingsTransitionRef = useSpringRef()
-  const recordingsTransitions = useTransition(cello.recordings, {
-    ref: recordingsTransitionRef,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.gentle,
-    trail: 40
-  })
-  useChain([awardsTransitionRef, recordingsTransitionRef], [0, 0.3])
+  const MotionList = motion(List)
   const _template = {
-    awards: awardsTransitions((style, award) => (
-      <animated.div style={style}>
+    awards: cello.awards.map(award => (
+      <motion.div
+        key={hashKey(award.name)}
+        variants={{
+          shown: { opacity: 1 },
+          hidden: { opacity: 0 }
+        }}
+      >
         <DefaultItem href={award.href}>{award.name}</DefaultItem>
-      </animated.div>
+      </motion.div>
     )),
-    recordings: recordingsTransitions((style, recording) => (
-      <animated.div style={style}>
+    recordings: cello.recordings.map(recording => (
+      <motion.div
+        key={hashKey(recording.name)}
+        variants={{
+          shown: { opacity: 1 },
+          hidden: { opacity: 0 }
+        }}
+      >
         <DefaultItem href={recording.href}>{recording.name}</DefaultItem>
-      </animated.div>
+      </motion.div>
     ))
   }
   return (
@@ -61,13 +50,39 @@ export default function Cello() {
           <Card icon={NewspaperIcon}>
             <Card.Title>Awards</Card.Title>
             <Card.Content>
-              <List>{_template.awards}</List>
+              <MotionList
+                className="space-y-2"
+                initial="hidden"
+                animate="shown"
+                variants={{
+                  shown: {
+                    transition: {
+                      staggerChildren: 0.07
+                    }
+                  }
+                }}
+              >
+                {_template.awards}
+              </MotionList>
             </Card.Content>
           </Card>
           <Card icon={VideoCameraIcon}>
             <Card.Title>Recordings</Card.Title>
             <Card.Content>
-              <List>{_template.recordings}</List>
+              <MotionList
+                className="space-y-2"
+                initial="hidden"
+                animate="shown"
+                variants={{
+                  shown: {
+                    transition: {
+                      staggerChildren: 0.07
+                    }
+                  }
+                }}
+              >
+                {_template.recordings}
+              </MotionList>
             </Card.Content>
           </Card>
         </div>
