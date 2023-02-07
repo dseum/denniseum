@@ -136,9 +136,9 @@ export default function Home(props) {
             .
           </p>
           <p>
-            My programming aesthetic involves <mark>JS</mark>, <mark>C++</mark>,{' '}
-            <mark>Rust</mark>, and <mark>Python</mark>, but I am also
-            well-versed in various other languages. Check out{' '}
+            I mainly enjoy <mark>JS</mark>, <mark>C++</mark>, <mark>Rust</mark>,
+            and <mark>Python</mark>, but I am also well-versed in various other
+            languages. Check out{' '}
             <InlineLink href="https://github.com/hackharvard/portal">
               hackharvard/portal
             </InlineLink>{' '}
