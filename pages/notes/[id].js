@@ -47,7 +47,7 @@ export default function Post(props) {
         <meta name="robots" content="none"></meta>
         <link
           rel="canonical"
-          href={`https://denniseum.com/blog/${_template.id}`}
+          href={`https://denniseum.com/notes/${_template.id}`}
         ></link>
       </Head>
       <div className="px-dynamic mx-auto max-w-3xl">
