@@ -114,8 +114,14 @@ export default function Home(props) {
           onClick={handleScrollDown}
           animate={visible ? 'visible' : 'invisible'}
           variants={{
-            visible: { opacity: 1, duration: 1 },
-            invisible: { opacity: 0, duration: 1 }
+            visible: {
+              opacity: 1,
+              duration: 1
+            },
+            invisible: {
+              opacity: 0,
+              duration: 1
+            }
           }}
         >
           <ChevronDownIcon className="h-8 w-8 animate-bounce" />
