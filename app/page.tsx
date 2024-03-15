@@ -34,7 +34,7 @@ export default function RootPage() {
             avoid Java whenever I can.
           </Native.P>
           <Native.P>
-            To contact me about anything, please email me at{' '}
+            To contact me about anything, please email{' '}
             <Native.A href="mailto:me@denniseum.com">me@denniseum.com</Native.A>
             . I&apos;ll try to get back to you as soon as possible!
           </Native.P>
