@@ -1,5 +1,6 @@
 import { combined } from '@/app/music/data'
 import ColListLayout from '@/lib/layouts/ColListLayout'
+import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
 import { Metadata } from 'next'
 
@@ -17,7 +18,10 @@ export default function MusicPage() {
       </ColListLayout.Col>
       <ColListLayout.List>
         {combined.map((item, i) => (
-          <ColListLayout.ListItem key={i}>
+          <ColListLayout.ListItem
+            className={cn(!item.href && 'md:pb-1')}
+            key={i}
+          >
             <ColListLayout.ListItem.Title>
               {item.href ? (
                 <a

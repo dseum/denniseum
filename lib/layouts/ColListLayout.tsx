@@ -21,9 +21,20 @@ export default function ColListLayout({
 ColListLayout.Col = slot.insert('Col')
 ColListLayout.List = slot.insert('List')
 
-function ListItem({ children }: { children: ReactSlot | Array<ReactSlot> }) {
+function ListItem({
+  className,
+  children,
+}: {
+  className?: string
+  children: ReactSlot | Array<ReactSlot>
+}) {
   return (
-    <li className="mb-10 md:mb-16 md:border md:border-black md:pb-4">
+    <li
+      className={cn(
+        'mb-10 md:mb-16 md:border md:border-black md:pb-4',
+        className,
+      )}
+    >
       <div className="flex flex-col-reverse gap-1 md:flex-row md:justify-between md:gap-10">
         {slot.select(children, 'Title')}
         <div>
