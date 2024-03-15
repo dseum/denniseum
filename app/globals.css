@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Fonts */
+  @font-face {
+    font-family: 'Neutral Face';
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src: url('/assets/fonts/NeutralFace/NeutralFace-Regular.woff2')
+      format('woff2');
+  }
+  @font-face {
+    font-family: 'Neutral Face';
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+    src: url('/assets/fonts/NeutralFace/NeutralFace-Bold.woff2') format('woff2');
+  }
+
+  /* General */
+  html {
+    @apply h-full;
+  }
+  body {
+    @apply h-full scroll-smooth bg-white font-serif text-2xl text-black antialiased sm:text-3xl;
+  }
+}
+
+@layer utilities {
+  .h-main {
+    height: calc(100vh - 4rem);
+  }
+
+  @keyframes beat {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+  .animate-beat {
+    animation: beat 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
