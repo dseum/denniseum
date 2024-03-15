@@ -24,7 +24,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Dennis Eum',
-  description: '',
+  description:
+    "I'm a Harvard student studying Computer Science, Statistics, and Psychology, and I currently chair the technology board at The Harvard Crimson.",
 }
 
 export default function RootLayout({
