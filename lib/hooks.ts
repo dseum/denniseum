@@ -24,8 +24,5 @@ export default function useBreakpoint() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-  useEffect(() => {
-    console.log(breakpoint)
-  }, [breakpoint])
   return breakpoint
 }
