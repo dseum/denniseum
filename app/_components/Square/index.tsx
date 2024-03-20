@@ -1,5 +1,4 @@
 'use client'
-
 import Image from 'next/image'
 import squareImage from './square.jpg'
 import { useState } from 'react'
@@ -20,10 +19,11 @@ export default function Square() {
     >
       <figure className="animate-beat">
         <Image
-          className="h-full w-full object-contain"
           src={squareImage}
-          alt="Software Engineer"
+          alt="Ripples On Earth"
           priority
+          width={1024}
+          height={1024}
           loading="eager"
           onLoad={() => setLoaded(true)}
         />
