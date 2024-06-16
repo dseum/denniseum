@@ -29,12 +29,11 @@ export default function RootPage() {
             .
           </Native.P>
           <Native.P>
-            I usually use TypeScript and Python for work, but I&apos;m also
-            experienced with Rust, C, OCaml, and other languages. Though I will
-            avoid Java whenever I can.
+            Most of my work involves TypeScript and Python, but I&apos;m also
+            experienced with Rust, C, Go, OCaml, and other languages.
           </Native.P>
           <Native.P>
-            To contact me about anything, please email{' '}
+            To contact, please email{' '}
             <Native.A href="mailto:me@denniseum.com">me@denniseum.com</Native.A>
             . I&apos;ll try to get back to you as soon as possible!
           </Native.P>
