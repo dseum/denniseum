@@ -12,7 +12,13 @@
   <div class="flex w-full justify-center sm:pt-8">
     <div bind:this={containerElement} class="max-w-3xl opacity-0">
       <figure class="animate-beat">
-        <img src="/square.jpg" alt="Ripples on Earth" loading="eager" />
+        <img
+          width={768}
+          height={768}
+          src="/square.jpg"
+          alt="Ripples on Earth"
+          loading="eager"
+        />
         <figcaption
           class="-translate-x-[0.4rem] -translate-y-7 text-right font-neutral text-xl font-bold sm:-translate-y-9 sm:text-3xl"
         >
