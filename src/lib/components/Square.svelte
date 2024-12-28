@@ -1,10 +1,18 @@
 <script lang="ts">
   import { animate } from 'motion'
+  import { onMount } from 'svelte'
 
   let containerElement = $state<HTMLDivElement>()
-  $effect(() => {
+  onMount(() => {
     if (!containerElement) return
-    animate(containerElement, { opacity: 1 }, { ease: 'easeOut', duration: 1 })
+    const animation = animate(
+      containerElement,
+      { opacity: 1 },
+      { ease: 'easeOut', duration: 1 },
+    )
+    return () => {
+      animation.cancel()
+    }
   })
 </script>
 
