@@ -11,13 +11,12 @@
 <div class="relative">
   <div class="flex w-full justify-center sm:pt-8">
     <div bind:this={containerElement} class="max-w-3xl opacity-0">
-      <figure class="animate-beat">
-        <img
-          width={768}
-          height={768}
-          src="/square.jpg"
+      <figure>
+        <enhanced:img
+          src="./Square/ripples_on_earth.jpg"
           alt="Ripples on Earth"
           loading="eager"
+          sizes="min(3024px, 100vw)"
         />
         <figcaption
           class="-translate-x-[0.4rem] -translate-y-7 text-right font-neutral text-xl font-bold sm:-translate-y-9 sm:text-3xl"
@@ -47,7 +46,7 @@
       opacity: 0.4;
     }
   }
-  .animate-beat {
+  figure {
     animation: beat 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 </style>
