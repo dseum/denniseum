@@ -24,6 +24,8 @@
           src="./Square/ripples_on_earth.jpg?w=960;1152;1536"
           alt="Ripples on Earth"
           sizes="(min-width: 640px) 960px, (min-width: 768px) 1152px, (min-width: 1024px) 1536px"
+          fetchpriority="high"
+          loading="eager"
         />
         <figcaption
           class="-translate-x-[0.4rem] -translate-y-7 text-right font-neutral text-xl font-bold sm:-translate-y-9 sm:text-3xl"
