@@ -28,7 +28,7 @@
           loading="eager"
         />
         <figcaption
-          class="-translate-x-[0.4rem] -translate-y-7 text-right font-neutral text-xl font-bold sm:-translate-y-9 sm:text-3xl"
+          class="font-neutral -translate-x-[0.4rem] -translate-y-7 text-right text-xl font-bold sm:-translate-y-9 sm:text-3xl"
         >
           Software Engineer
         </figcaption>
@@ -36,7 +36,7 @@
     </div>
   </div>
   <div
-    class="absolute left-2 top-2 font-neutral text-[16vw] leading-none sm:left-0 sm:top-0 lg:text-[12rem]"
+    class="font-neutral absolute top-2 left-2 text-[16vw] leading-none sm:top-0 sm:left-0 lg:text-[12rem]"
   >
     <h1 class="font-bold">Dennis</h1>
     <h1 class="font-bold">Eum</h1>

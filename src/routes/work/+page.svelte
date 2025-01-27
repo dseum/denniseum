@@ -10,7 +10,7 @@
 <ol class="space-y-4 md:space-y-8">
   {#each experiences as experience}
     <li>
-      <div class="lg:flex justify-between">
+      <div class="justify-between lg:flex">
         <div>
           {experience.role}
         </div>

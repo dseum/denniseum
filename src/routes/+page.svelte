@@ -24,9 +24,9 @@
     <P>
       Most of my work involves Go, TypeScript, and Python, but I&apos;m also
       experienced with Rust, C, OCaml, and other programming languages. If you
-      have strong opinions about programming languages, compilers, or the state
-      of machine learning, feel free to reach out! I have a lot of thoughts on
-      these topics.
+      have any opinions about programming languages, compilers, or machine
+      learning, feel free to reach out! I have a lot of thoughts on these
+      topics.
     </P>
     <P>
       To contact, please email{' '}

@@ -61,7 +61,7 @@
 </nav>
 {#if menuIsVisible}
   <div
-    class="h-[calc(100vh-4rem)] fixed left-0 top-16 z-20 w-full space-y-6 overflow-y-scroll bg-white p-6 md:hidden"
+    class="fixed top-16 left-0 z-20 h-[calc(100vh-4rem)] w-full space-y-6 overflow-y-scroll bg-white p-6 md:hidden"
     transition:fade={{
       duration: 200,
     }}
