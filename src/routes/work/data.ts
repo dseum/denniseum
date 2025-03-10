@@ -37,7 +37,19 @@ export const experiences: Experience[] = [
     },
   },
   {
-    role: 'Teaching Fellow for CS 121',
+    role: 'Teaching Fellow for Programming Language Theory (CS 1520)',
+    for: 'Harvard University',
+    location: {
+      city: 'Cambridge',
+      macro: 'MA',
+    },
+    period: {
+      start: new Date(2025, 0),
+      end: null,
+    },
+  },
+  {
+    role: 'Teaching Fellow for Theoretical Computer Science (CS 121)',
     for: 'Harvard University',
     location: {
       city: 'Cambridge',
@@ -49,7 +61,7 @@ export const experiences: Experience[] = [
     },
   },
   {
-    role: 'Teaching Fellow for CS 124',
+    role: 'Teaching Fellow for Data Structures and Algorithms (CS 124)',
     for: 'Harvard University',
     location: {
       city: 'Cambridge',

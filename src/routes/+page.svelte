@@ -8,7 +8,7 @@
   <meta name="robots" content="all" />
   <meta
     name="description"
-    content="I'm a Harvard undergraduate studying Computer Science (with a
+    content="I'm a Harvard undergraduate studying for a S.M. and A.B. in Computer Science (with a
       secondary in Psychology), and I currently chair the technology board at The Harvard Crimson."
   />
 </svelte:head>
@@ -17,8 +17,9 @@
 <div class="flex justify-center">
   <div class="max-w-3xl space-y-4 md:space-y-8">
     <P>
-      I&apos;m a Harvard undergraduate studying Computer Science (with a
-      secondary in Psychology), and I currently chair the technology board at{' '}
+      I&apos;m a Harvard undergraduate studying for a S.M. and A.B. in Computer
+      Science (with a secondary in Psychology), and I currently chair the
+      technology board at{' '}
       <A href="https://thecrimson.com">The Harvard Crimson</A>.
     </P>
     <P>
@@ -30,9 +31,8 @@
     </P>
     <P>
       To contact, please email{' '}
-      <A href="mailto:me@denniseum.com">me@denniseum.com</A>. I occasionally
-      face spontaneous responsibilities, but I should get back to you within a
-      week!
+      <A href="mailto:me@denniseum.com">me@denniseum.com</A>. I am occasionally
+      quite busy, but I should get back to you within a week!
     </P>
   </div>
 </div>
