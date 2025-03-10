@@ -26,6 +26,14 @@
   ]
 </script>
 
+<svelte:window
+  on:keydown={(e) => {
+    if (e.key === 'Escape') {
+      menuIsVisible = false
+    }
+  }}
+/>
+
 <nav
   class="fixed top-0 z-20 flex h-16 w-full justify-between border-b-2 border-black bg-white px-4 md:border-b md:px-6"
 >
