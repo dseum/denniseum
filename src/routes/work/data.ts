@@ -25,18 +25,6 @@ export const experiences: Experience[] = [
     },
   },
   {
-    role: 'Software Engineer (Contracted)',
-    for: 'Center for Effective School Operations',
-    location: {
-      city: 'Minneapolis',
-      macro: 'MN',
-    },
-    period: {
-      start: new Date(2024, 4),
-      end: null,
-    },
-  },
-  {
     role: 'Teaching Fellow for Programming Language Theory (CS 1520)',
     for: 'Harvard University',
     location: {
@@ -46,6 +34,18 @@ export const experiences: Experience[] = [
     period: {
       start: new Date(2025, 0),
       end: null,
+    },
+  },
+  {
+    role: 'Software Engineer (Contracted)',
+    for: 'Center for Effective School Operations',
+    location: {
+      city: 'Minneapolis',
+      macro: 'MN',
+    },
+    period: {
+      start: new Date(2024, 4),
+      end: new Date(2025, 3),
     },
   },
   {
