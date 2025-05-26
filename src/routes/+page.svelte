@@ -23,9 +23,9 @@
     </P>
     <P>
       Most of my work involves C++, Go, TypeScript, and Python, but I&apos;m
-      also experienced with Rust, OCaml, and other programming languages. I love
-      thinking about programming languages, compilers, and performance, and it
-      would be great to talk with you about these if you are interested as well!
+      also experienced with Rust, OCaml, and others. Thinking about programming
+      languages, compilers, and performance is my favorite pastime, and I would
+      love to talk if you are interested as well!
     </P>
     <P>
       To contact, please email{' '}
