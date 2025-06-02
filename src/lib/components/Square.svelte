@@ -21,11 +21,9 @@
     <div bind:this={containerElement} class="max-w-3xl opacity-0">
       <figure>
         <enhanced:img
-          src="./Square/ripples_on_earth.jpg?w=960;1152;1536"
+          src="./Square/ripples_on_earth.jpg"
           alt="Ripples on Earth"
-          sizes="(min-width: 640px) 960px, (min-width: 768px) 1152px, (min-width: 1024px) 1536px"
-          fetchpriority="high"
-          loading="eager"
+          sizes="min(1536px, 100vw)"
         />
         <figcaption
           class="font-neutral -translate-x-[0.4rem] -translate-y-7 text-right text-xl font-bold sm:-translate-y-9 sm:text-3xl"
