@@ -25,7 +25,31 @@ export const experiences: Experience[] = [
     },
   },
   {
-    role: 'Teaching Fellow for Programming Language Theory (CS 1520)',
+    role: 'Teaching Fellow for Theoretical Computer Science',
+    for: 'Harvard University',
+    location: {
+      city: 'Cambridge',
+      macro: 'MA',
+    },
+    period: {
+      start: new Date(2023, 7),
+      end: null,
+    },
+  },
+  {
+    role: 'Software Engineer',
+    for: 'Harvard Undergraduate Quantitative Traders',
+    location: {
+      city: 'Cambridge',
+      macro: 'MA',
+    },
+    period: {
+      start: new Date(2025, 3),
+      end: null,
+    },
+  },
+  {
+    role: 'Teaching Fellow for Programming Language Theory',
     for: 'Harvard University',
     location: {
       city: 'Cambridge',
@@ -33,7 +57,7 @@ export const experiences: Experience[] = [
     },
     period: {
       start: new Date(2025, 0),
-      end: null,
+      end: new Date(2025, 4),
     },
   },
   {
@@ -49,19 +73,7 @@ export const experiences: Experience[] = [
     },
   },
   {
-    role: 'Teaching Fellow for Theoretical Computer Science (CS 121)',
-    for: 'Harvard University',
-    location: {
-      city: 'Cambridge',
-      macro: 'MA',
-    },
-    period: {
-      start: new Date(2023, 7),
-      end: new Date(2024, 11),
-    },
-  },
-  {
-    role: 'Teaching Fellow for Data Structures and Algorithms (CS 124)',
+    role: 'Teaching Fellow for Data Structures and Algorithms',
     for: 'Harvard University',
     location: {
       city: 'Cambridge',
