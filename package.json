@@ -14,10 +14,10 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.9",
-    "@sveltejs/adapter-static": "^3.0.8",
+    "@sveltejs/adapter-cloudflare": "^7.0.3",
     "@sveltejs/enhanced-img": "^0.6.0",
-    "@sveltejs/kit": "^2.21.1",
-    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@sveltejs/kit": "^2.21.2",
+    "@sveltejs/vite-plugin-svelte": "^5.1.0",
     "@tailwindcss/vite": "4.1.8",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",
@@ -26,16 +26,16 @@
     "prettier": "^3.5.3",
     "prettier-plugin-svelte": "^3.4.0",
     "prettier-plugin-tailwindcss": "^0.6.12",
-    "svelte": "^5.33.13",
+    "svelte": "^5.33.18",
     "svelte-check": "^4.2.1",
     "tailwindcss": "4.1.8",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.33.0",
+    "typescript-eslint": "^8.33.1",
     "vite": "^6.3.5"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
-    "motion": "^12.15.0"
+    "motion": "^12.16.0"
   },
   "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }
