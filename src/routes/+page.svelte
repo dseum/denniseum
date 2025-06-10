@@ -14,18 +14,16 @@
 
 <Square />
 <div class="flex justify-center">
-  <div class="max-w-3xl space-y-4 md:space-y-8">
+  <div class="my-6 max-w-3xl space-y-4 md:my-10 md:space-y-8">
     <P>
-      I&apos;m a Harvard undergraduate studying for a S.M. and A.B. in Computer
+      I'm a Harvard undergraduate studying for a S.M. and A.B. in Computer
       Science with a secondary in Psychology, and I currently chair the
       technology board at{' '}
       <A href="https://thecrimson.com">The Harvard Crimson</A>.
     </P>
     <P>
-      Most of my work involves C++, Go, TypeScript, and Python, but I&apos;m
-      also experienced with Rust, OCaml, and others. Thinking about programming
-      languages, compilers, and performance is my favorite pastime, and I would
-      love to talk if you are interested as well!
+      Most of my work involves C++, Go, TypeScript, and Python, but I'm also
+      experienced with Rust, OCaml, and others.
     </P>
     <P>
       To contact, please email{' '}

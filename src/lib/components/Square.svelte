@@ -16,30 +16,27 @@
   })
 </script>
 
-<div class="relative">
-  <div class="flex w-full justify-center sm:pt-8">
-    <div bind:this={containerElement} class="max-w-3xl opacity-0">
-      <figure>
-        <enhanced:img
-          src="./Square/ripples_on_earth.jpg?w=1536;1366;1080;768;540"
-          alt="Ripples on Earth"
-          sizes="min(1536px, 100vw)"
-          fetchpriority="high"
-          loading="eager"
-        />
-        <figcaption
-          class="font-neutral -translate-x-[0.4rem] -translate-y-7 text-right text-xl font-bold sm:-translate-y-9 sm:text-3xl"
-        >
-          Software Engineer
-        </figcaption>
-      </figure>
+<div class="flex justify-center">
+  <div class="relative w-full max-w-4xl">
+    <div class="flex w-full justify-center sm:pt-8">
+      <div bind:this={containerElement} class="max-w-3xl opacity-0">
+        <figure>
+          <enhanced:img
+            src="./Square/ripples_on_earth.jpg?w=1536;1366;1080;768;540"
+            alt="Ripples on Earth"
+            sizes="min(1536px, 100vw)"
+            fetchpriority="high"
+            loading="eager"
+          />
+        </figure>
+      </div>
     </div>
-  </div>
-  <div
-    class="font-neutral absolute top-2 left-2 text-[16vw] leading-none sm:top-0 sm:left-0 lg:text-[12rem]"
-  >
-    <h1 class="font-bold">Dennis</h1>
-    <h1 class="font-bold">Eum</h1>
+    <div
+      class="font-neutral absolute top-2 left-2 text-[16vw] leading-none sm:top-0 sm:left-0 lg:text-[12rem]"
+    >
+      <h1 class="font-bold">Dennis</h1>
+      <h1 class="font-bold">Eum</h1>
+    </div>
   </div>
 </div>
 
