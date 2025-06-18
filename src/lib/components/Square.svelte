@@ -21,7 +21,7 @@
     <div class="flex w-full justify-center sm:pt-8">
       <div bind:this={containerElement} class="max-w-3xl opacity-0">
         <div
-          class="aspect-square w-[calc(100vw-1rem)] max-w-3xl md:w-[calc(100vw-2rem)]"
+          class="aspect-square w-[calc(100vw-2rem)] max-w-3xl md:w-[calc(100vw-4rem)]"
         >
           <figure>
             <enhanced:img
