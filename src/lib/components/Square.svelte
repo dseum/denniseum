@@ -20,15 +20,19 @@
   <div class="relative w-full max-w-4xl">
     <div class="flex w-full justify-center sm:pt-8">
       <div bind:this={containerElement} class="max-w-3xl opacity-0">
-        <figure>
-          <enhanced:img
-            src="./Square/ripples_on_earth.jpg?w=1536;1366;1080;768;540"
-            alt="Ripples on Earth"
-            sizes="min(1536px, 100vw)"
-            fetchpriority="high"
-            loading="eager"
-          />
-        </figure>
+        <div
+          class="aspect-square w-[calc(100vw-1rem)] max-w-3xl md:w-[calc(100vw-2rem)]"
+        >
+          <figure>
+            <enhanced:img
+              src="./Square/ripples_on_earth.jpg?w=1536;1366;1080;768;540"
+              alt="Ripples on Earth"
+              sizes="min(1536px, 100vw)"
+              fetchpriority="high"
+              loading="eager"
+            />
+          </figure>
+        </div>
       </div>
     </div>
     <div
