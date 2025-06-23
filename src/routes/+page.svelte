@@ -18,7 +18,7 @@
     <P>
       I'm a Harvard undergraduate studying for a S.M. and A.B. in Computer
       Science with a secondary in Psychology, and I currently chair the
-      technology board at{' '}
+      technology board at
       <A href="https://thecrimson.com">The Harvard Crimson</A>.
     </P>
     <P>
@@ -26,7 +26,7 @@
       experienced with Rust, OCaml, and others.
     </P>
     <P>
-      To contact, please email{' '}
+      To contact, please email
       <A href="mailto:me@denniseum.com">me@denniseum.com</A>. I should get back
       to you within a week.
     </P>

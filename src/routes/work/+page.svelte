@@ -9,7 +9,7 @@
 
 <div class="flex justify-center">
   <ol class="w-full max-w-7xl space-y-4 md:space-y-8">
-    {#each experiences as experience}
+    {#each experiences as experience, i (i)}
       <li>
         <div class="justify-between lg:flex">
           <div>

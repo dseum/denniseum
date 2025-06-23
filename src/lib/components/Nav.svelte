@@ -38,7 +38,7 @@
   class="fixed top-0 z-20 flex h-16 w-full justify-between border-b-2 border-black bg-white px-4 md:border-b md:px-6"
 >
   <div class="hidden items-center gap-2 md:flex">
-    {#each pages as page}
+    {#each pages as page (page.name)}
       <a
         class={[
           'px-2 transition-all duration-300',
@@ -74,7 +74,7 @@
       duration: 200,
     }}
   >
-    {#each pages as page}
+    {#each pages as page (page.name)}
       <a
         class={[
           'flex h-12 items-center border border-black px-3 transition-all duration-300',

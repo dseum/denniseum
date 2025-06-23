@@ -24,7 +24,7 @@
     </div>
     <div class="col-span-5 ml-auto">
       <ol class="max-w-max space-y-6 pt-6 md:space-y-8 md:pt-8 lg:pt-0">
-        {#each awards as award}
+        {#each awards as award (award.name)}
           <li class="leading-normal">
             <span
               class="mr-0.5 border border-gray-800 px-1 text-base sm:mr-1 sm:text-xl"
